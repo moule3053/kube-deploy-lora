@@ -23,9 +23,9 @@ spec:
       protocol: TCP
       port: 8001
       targetPort: 8001
-#    - name: monitoring-port
-#      protocol: TCP
-#      port: 8101
-#      targetPort: 8101
+    - name: monitoring-port
+      protocol: TCP
+      port: 8101
+      targetPort: 8101
   selector:
     app: chirpstack-application-server
