@@ -21,11 +21,11 @@ spec:
         - name: chirpstack-gateway-bridge
           image: chirpstack/chirpstack-gateway-bridge
           env:
-            - name: INTEGRATION__MQTT__AUTH__GENERIC__PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: chirpstack-gateway-bridge-secrets
-                  key: MQTT_PASSWORD
+#            - name: INTEGRATION__MQTT__AUTH__GENERIC__PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: chirpstack-gateway-bridge-secrets
+#                  key: MQTT_PASSWORD
             - name: INTEGRATION__MQTT__AUTH__GENERIC__CLIENT_ID
               valueFrom:
                 fieldRef:
