@@ -624,13 +624,13 @@ data:
       # Prometheus metrics endpoint.
       #
       # When set true, Prometheus metrics will be served at '/metrics'.
-      prometheus_endpoint=true
+      #prometheus_endpoint=true
 
       # Prometheus API timing histogram.
       #
       # By setting this to true, the API request timing histogram will be enabled.
       # See also: https://github.com/grpc-ecosystem/go-grpc-prometheus#histograms
-      prometheus_api_timing_histogram=true
+      #prometheus_api_timing_histogram=true
 
       # Health check endpoint.
       #
