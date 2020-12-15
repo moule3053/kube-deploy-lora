@@ -21,11 +21,13 @@ spec:
         - name: chirpstack-gateway-bridge
           image: chirpstack/chirpstack-gateway-bridge:3.9.2
           env:
-            - name: INTEGRATION__MQTT__AUTH__GENERIC__PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: chirpstack-gateway-bridge-secrets
-                  key: MQTT_PASSWORD
+#            - name: INTEGRATION__MQTT__AUTH__GENERIC__PASSWORD
+#              valueFrom:
+#                secretKeyRef:
+#                  name: chirpstack-gateway-bridge-secrets
+#                  key: MQTT_PASSWORD
+            - name: INTEGRATION__MQTT__AUTH__GENERIC__SERVERS
+              value: tcp://mosquitto:1883
             - name: INTEGRATION__MQTT__AUTH__GENERIC__CLIENT_ID
               valueFrom:
                 fieldRef:
