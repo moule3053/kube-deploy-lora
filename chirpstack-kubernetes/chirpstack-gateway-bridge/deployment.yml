@@ -25,7 +25,7 @@ spec:
               valueFrom:
                 secretKeyRef:
                   name: chirpstack-gateway-bridge-secrets
-                  key: MQTT_PASSWORD
+                  key: mqtt_password
             - name: INTEGRATION__MQTT__AUTH__GENERIC__CLIENT_ID
               valueFrom:
                 fieldRef:
