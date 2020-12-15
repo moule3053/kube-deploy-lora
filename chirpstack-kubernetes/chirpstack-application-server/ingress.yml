@@ -6,16 +6,16 @@ metadata:
     ingress.kubernetes.io/ssl-passthrough: "false"
   labels:
     app: chirpstack-application-server
-spec:
+#spec:
   # This is required to tell the ingress to respond to HTTPS
-  tls:
-    - hosts:
-        - chirpstack-application-server.<your_domain>
-  rules:
-    - host: chirpstack-application-server.<your_domain>
-      http:
-        paths:
-          - path: /
-            backend:
-              serviceName: chirpstack-application-server
-              servicePort: 443
+#  tls:
+#    - hosts:
+#        - chirpstack-application-server.<your_domain>
+#  rules:
+#    - host: chirpstack-application-server.<your_domain>
+#      http:
+#        paths:
+#          - path: /
+#            backend:
+#              serviceName: chirpstack-application-server
+#              servicePort: 443
