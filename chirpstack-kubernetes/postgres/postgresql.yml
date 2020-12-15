@@ -27,11 +27,11 @@ spec:
             name: postgredb
           - mountPath: /docker-entrypoint-initdb.d
             name: postgresinit
-#
-#      volumes:
-#      - name: postgredb
-#        persistentVolumeClaim:
-#          claimName: postgres-pv-claim
-#      - name: postgresinit
-#        persistentVolumeClaim:
-#          claimName: postgresinit-pv-claim
+
+      volumes:
+      - name: postgredb
+        persistentVolumeClaim:
+          claimName: postgres-pv-claim
+      - name: postgresinit
+        persistentVolumeClaim:
+          claimName: postgresinit-pv-claim
