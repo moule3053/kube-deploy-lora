@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: chirpstack-gateway-bridge
-#          image: chirpstack/chirpstack-gateway-bridge:3.9.2
+          #image: chirpstack/chirpstack-gateway-bridge:3.9.2
           image: prrsjunior/chirpstack-gateway-bridge
           env:
             - name: INTEGRATION__MQTT__AUTH__GENERIC__PASSWORD
