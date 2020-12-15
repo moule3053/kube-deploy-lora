@@ -20,16 +20,16 @@ spec:
       containers:
         - name: chirpstack-gateway-bridge
           image: chirpstack/chirpstack-gateway-bridge:3.9.2
-#          env:
-#            - name: INTEGRATION__MQTT__AUTH__GENERIC__PASSWORD
-#              valueFrom:
-#                secretKeyRef:
-#                  name: chirpstack-gateway-bridge-secrets
-#                  key: MQTT_PASSWORD
-#            - name: INTEGRATION__MQTT__AUTH__GENERIC__CLIENT_ID
-#              valueFrom:
-#                fieldRef:
-#                  fieldPath: metadata.name
+          env:
+            - name: INTEGRATION__MQTT__AUTH__GENERIC__PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: chirpstack-gateway-bridge-secrets
+                  key: MQTT_PASSWORD
+            - name: INTEGRATION__MQTT__AUTH__GENERIC__CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
           ports:
             - name: tcp
               containerPort: 8004
