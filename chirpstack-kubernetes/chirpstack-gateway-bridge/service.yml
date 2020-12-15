@@ -6,8 +6,8 @@ kind: Service
 #    prometheus.io/scrape: "true"
 #    prometheus.io/path: "/metrics"
 #    prometheus.io/port: "8004"
-#  labels:
-#    app: chirpstack-gateway-bridge
+  labels:
+    app: chirpstack-gateway-bridge
 spec:
   type: NodePort
   ports:
