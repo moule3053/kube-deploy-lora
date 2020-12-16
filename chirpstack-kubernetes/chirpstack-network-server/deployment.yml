@@ -23,10 +23,12 @@ spec:
           image: prrsjunior/chirpstack-network-server
           env:
             - name: POSTGRESQL__DSN
-              valueFrom:
-                secretKeyRef:
-                  name: chirpstack-network-server-secrets
-                  key: postgresql_dsn
+              value: postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable
+              #valueFrom:
+              #  secretKeyRef:
+              #    name: chirpstack-network-server-secrets
+              #    key: postgresql_dsn
+
             - name: REDIS__PASSWORD
               valueFrom:
                 secretKeyRef:
