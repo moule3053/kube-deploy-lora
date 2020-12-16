@@ -43,15 +43,11 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
-            - name: APPLICATION_SERVER__API__PUBLIC_HOST
-              value: localhost:8001
           ports:
             - name: tcp
               containerPort: 8000
             - name: monitoring-port
               containerPort: 8004
-            - name: ui-port
-              containerPort: 8001
           resources:
             limits:
               cpu: 500m
