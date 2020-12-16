@@ -15,7 +15,7 @@ data:
     # Log to syslog.
     #
     # When set to true, log messages are being written to syslog.
-    log_to_syslog=true
+    log_to_syslog=false
 
 
     # PostgreSQL settings.
@@ -639,7 +639,7 @@ data:
       # determine the health of this service:
       #   * Ping PostgreSQL database
       #   * Ping Redis database
-      healthcheck_endpoint=false
+      healthcheck_endpoint=true
 
 
     # Join-server settings.
