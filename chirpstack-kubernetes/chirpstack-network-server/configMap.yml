@@ -639,7 +639,7 @@ data:
       # determine the health of this service:
       #   * Ping PostgreSQL database
       #   * Ping Redis database
-      healthcheck_endpoint=true
+      healthcheck_endpoint=false
 
 
     # Join-server settings.
