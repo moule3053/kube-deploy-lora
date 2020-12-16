@@ -23,7 +23,7 @@ spec:
           image: prrsjunior/chirpstack-network-server
           env:
             - name: POSTGRESQL__DSN
-              value: postgres://localhost/chirpstack_ns?sslmode=disable
+              value: postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable
               #valueFrom:
               #  secretKeyRef:
               #    name: chirpstack-network-server-secrets
