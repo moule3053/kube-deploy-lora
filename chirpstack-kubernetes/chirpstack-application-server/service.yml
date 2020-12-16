@@ -30,5 +30,5 @@ spec:
 #      targetPort: 8101
   selector:
     app: chirpstack-application-server
-#  externalIPs:
-#   - 192.168.2.202
+  externalIPs:
+   - 192.168.2.202
