@@ -15,7 +15,7 @@ data:
     # Log to syslog.
     #
     # When set to true, log messages are being written to syslog.
-    log_to_syslog=false
+    log_to_syslog=true
 
 
     # PostgreSQL settings.
