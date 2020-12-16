@@ -30,7 +30,7 @@ spec:
               #  secretKeyRef:
               #    name: chirpstack-application-server-secrets
               #    key: postgresql_dsn
-            - name: REDIS__PASSWORD
+            - name: REDIS__URL
               value: redis://redis:6379
               #valueFrom:
               #  secretKeyRef:
