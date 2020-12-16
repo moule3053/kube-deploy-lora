@@ -3,6 +3,9 @@ kind: Deployment
 metadata:
   name: postgres
 spec:
+  selector:
+    matchLabels:
+      app: postgres
   replicas: 1
   template:
     metadata:
@@ -11,7 +14,7 @@ spec:
     spec:
       containers:
         - name: postgres
-          image: postgres:10.4
+          image: postgres:9.6-alpine
           imagePullPolicy: "IfNotPresent"
           ports:
             - containerPort: 5432
