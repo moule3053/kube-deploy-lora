@@ -20,7 +20,7 @@ spec:
       containers:
         - name: chirpstack-network-server
           #image: chirpstack/chirpstack-network-server:3.10.0
-          image: prrsjunior/chirpstack-gateway-bridge
+          image: prrsjunior/chirpstack-network-server
           env:
             - name: POSTGRESQL__DSN
               valueFrom:
