@@ -9,12 +9,12 @@ metadata:
   labels:
     app: chirpstack-application-server
 spec:
-#  clusterIP: "None"
+  #clusterIP: "None"
   type: NodePort
   ports:
     - name: ui-port
       protocol: TCP
-      port: 443
+      port: 8080
       targetPort: 8080
     - name: join-port
       protocol: TCP
