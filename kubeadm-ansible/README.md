@@ -11,6 +11,26 @@ System requirements:
   - Deployment environment must have Ansible `2.4.0+`
   - Master and nodes must have passwordless SSH access
 
+### Edit the fixed version of K8s in /roles/kubernetes/master/meta 
+```
+kubelet=1.19.2-00", "kubeadm=1.19.2-00", "kubectl=1.19.2-00
+```
+### Edit the fixed version of K8s in /roles/kubeadm/node/meta
+```
+kubelet=1.19.2-00", "kubeadm=1.19.2-00
+```
+### Edit the network implementation in /group_vars/all.yml
+```
+kube_version: v1.18.0
+...
+network: flannel
+```
+### From kubeadm-ansible directory:
+```
+ansible-playbook -i hosts.ini site.yaml
+```
+
+
 # Usage
 
 Add the system information gathered above into a file called `hosts.ini`. For example:
