@@ -1,7 +1,6 @@
 # kube-deploy-lora
 
 
-### Wake up samurai, we got an image to burn.
 * Run etcher from cli to burn images:
 ```
 sudo /Applications/balenaEtcher.app/Contents/MacOS/balenaEtcher
