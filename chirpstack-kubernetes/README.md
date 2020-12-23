@@ -15,8 +15,10 @@ sh ./postgres/create_db.sh
 ### external IP (192.168.2.11 for now) is exposed in:
 ```
 port:8080  /chirpstack-application-server/service.yml
+port:8080  /chirpstack-network-server/service.yml
 port:9090  /monitoring/prometheus.yaml
 port:3000  /monitoring/grafana.yaml
+port:1880  /nodered/service.yml
 ```
 
 
