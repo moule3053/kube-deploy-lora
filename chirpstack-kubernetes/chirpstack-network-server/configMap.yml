@@ -166,7 +166,7 @@ data:
       # * KR_920_923
       # * RU_864_870
       # * US_902_928
-      name="US_902_928"
+      name="EU_863_870"
 
       # Enforce 400ms dwell time.
       #
@@ -625,7 +625,7 @@ data:
       # Prometheus metrics endpoint.
       #
       # When set true, Prometheus metrics will be served at '/metrics'.
-      #prometheus_endpoint=true
+      prometheus_endpoint=true
 
       # Prometheus API timing histogram.
       #
