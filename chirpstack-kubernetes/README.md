@@ -5,10 +5,11 @@
 kubectl apply -f ./mosquitto/
 kubectl apply -f ./postgres/
 kubectl apply -k redis/.
-kubectl apply -f ./chirpstack-gateway-bridge/
+# kubectl apply -f ./chirpstack-gateway-bridge/
 kubectl apply -f ./chirpstack-network-server/
 kubectl apply -f ./chirpstack-application-server/
 kubectl apply -f ./monitoring/
+kubectl apply -f ./nodered/
 sh ./postgres/create_db.sh
 ```
 
