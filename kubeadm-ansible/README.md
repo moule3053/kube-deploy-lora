@@ -1,25 +1,14 @@
 # Kubeadm Ansible Playbook
 
-Build a Kubernetes cluster using Ansible with kubeadm. The goal is easily install a Kubernetes cluster on machines running:
-
-  - Ubuntu 16.04
-  - CentOS 7
-  - Debian 9
-
-System requirements:
-
-  - Deployment environment must have Ansible `2.4.0+`
-  - Master and nodes must have passwordless SSH access
-
-### Edit the fixed version of K8s in /roles/kubernetes/master/meta 
+### Edited the fixed version of K8s in /roles/kubernetes/master/meta 
 ```
-kubelet=1.19.2-00", "kubeadm=1.19.2-00", "kubectl=1.19.2-00
+kubelet=1.18.0-00", "kubeadm=1.18.0-00", "kubectl=1.18.0-00
 ```
-### Edit the fixed version of K8s in /roles/kubeadm/node/meta
+### Edited the fixed version of K8s in /roles/kubeadm/node/meta
 ```
-kubelet=1.19.2-00", "kubeadm=1.19.2-00
+kubelet=1.18.0-00", "kubeadm=1.18.0-00
 ```
-### Edit the network implementation in /group_vars/all.yml
+### Edited the network implementation in /group_vars/all.yml
 ```
 kube_version: v1.18.0
 ...
@@ -30,6 +19,16 @@ network: flannel
 ansible-playbook -i hosts.ini site.yaml
 ```
 
+Build a Kubernetes cluster using Ansible with kubeadm. The goal is easily install a Kubernetes cluster on machines running:
+
+  - Ubuntu 16.04
+  - CentOS 7
+  - Debian 9
+
+System requirements:
+
+  - Deployment environment must have Ansible `2.4.0+`
+  - Master and nodes must have passwordless SSH access
 
 # Usage
 

@@ -1,6 +1,6 @@
 # kube-deploy-lora
 
-* Run following commands:
+### Run following commands:
 ```
 kubectl apply -f ./mosquitto/
 kubectl apply -f ./postgres/
@@ -12,7 +12,7 @@ kubectl apply -f ./monitoring/
 sh ./postgres/create_db.sh
 ```
 
-* external IPs are set inside (192.168.2.11 for now):
+### external IPs are set inside (192.168.2.11 for now):
 ```
 port:8080  /chirpstack-application-server/service.yml
 port:9090  /monitoring/prometheus.yaml

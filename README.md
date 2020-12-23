@@ -1,27 +1,27 @@
 # kube-deploy-lora
 
 
-* Run etcher from cli to burn images:
+### Run etcher from cli to burn images:
 ```
 sudo /Applications/balenaEtcher.app/Contents/MacOS/balenaEtcher
 ```
 
-* Allow ssh in SD cards
+### Allow ssh in SD cards
 ```
 touch /Volumes/boot/ssh
 ```
 
-* SSH into each Pis
+### SSH into each Pis
 ```
 ssh pi@raspberrypi.local
 ```
 
-* Add inside /boot/cmdline.txt
+### Add inside /boot/cmdline.txt
 ```
 cgroup_enable=memory
 ```
 
-* Add inside /etc/network/interfaces
+### Add inside /etc/network/interfaces
 ```
 auto eth0
 iface eth0 inet static
@@ -30,17 +30,17 @@ netmask 255.255.255.0
 gateway 192.168.thumb.pinky
 ```
 
-* Edit the hostname and password by
+### Edit the hostname and password by
 ```
 sudo raspi-config
 ```
 
-* And reboot
+### And reboot
 ```
 sudo reboot
 ```
 
-* Lastly, enable passwordless connection by
+### Lastly, enable passwordless connection by
 ```
 ssh-copy-id pi@name
 ```
