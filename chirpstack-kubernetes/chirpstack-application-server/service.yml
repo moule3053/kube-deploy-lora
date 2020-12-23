@@ -31,4 +31,4 @@ spec:
   selector:
     app: chirpstack-application-server
   externalIPs:
-   - 192.168.2.11
+  - 192.168.2.11
