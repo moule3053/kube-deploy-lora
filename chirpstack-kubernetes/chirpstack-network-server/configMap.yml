@@ -230,7 +230,7 @@ data:
       #
       # Please consult the LoRaWAN Regional Parameters specification for valid
       # options of the configured network_server.band.name.
-      rx1_dr_offset=0
+      #rx1_dr_offset=0
 
       # RX2 data-rate
       #
@@ -239,7 +239,7 @@ data:
       #
       # Please consult the LoRaWAN Regional Parameters specification for valid
       # options of the configured network_server.band.name.
-      rx2_dr=-1
+      #rx2_dr=-1
 
       # RX2 frequency
       #
@@ -247,7 +247,7 @@ data:
       #
       # Please consult the LoRaWAN Regional Parameters specification for valid
       # options of the configured network_server.band.name.
-      rx2_frequency=-1
+      #rx2_frequency=-1
 
       # Prefer RX2 on RX1 data-rate less than.
       #
@@ -255,13 +255,13 @@ data:
       # is smaller than the configured value, then the Network Server will
       # first try to schedule the downlink for RX2, failing that (e.g. the gateway
       # has already a payload scheduled at the RX2 timing) it will try RX1.
-      rx2_prefer_on_rx1_dr_lt=0
+      #rx2_prefer_on_rx1_dr_lt=0
 
       # Prefer RX2 on link budget.
       #
       # When the link-budget is better for RX2 than for RX1, the Network Server will first
       # try to schedule the downlink in RX2, failing that it will try RX1.
-      rx2_prefer_on_link_budget=false
+      #rx2_prefer_on_link_budget=false
 
       # Prefer gateways for downlink with given uplink (SNR) margin.
       #
@@ -308,7 +308,7 @@ data:
       #
       # Example:
       # enabled_uplink_channels=[0, 1, 2, 3, 4, 5, 6, 7]
-      enabled_uplink_channels=[0, 1, 2, 3, 4, 5, 6, 7]
+      #enabled_uplink_channels=[0, 1, 2, 3, 4, 5, 6, 7]
 
 
       # Extra channel configuration.
