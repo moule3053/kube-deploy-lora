@@ -50,14 +50,14 @@ spec:
               valueFrom:
                 fieldRef:
                   fieldPath: metadata.name
-          readinessProbe:
-            httpGet:
-              path: /health
-              port: 8101
-            initialDelaySeconds: 5
-            periodSeconds: 5
-            timeoutSeconds: 2
-            failureThreshold: 5
+#          readinessProbe:
+#            httpGet:
+#              path: /health
+#              port: 8101
+#            initialDelaySeconds: 5
+#            periodSeconds: 5
+#            timeoutSeconds: 2
+#            failureThreshold: 5
           ports:
             - name: ui-port
               containerPort: 8080
