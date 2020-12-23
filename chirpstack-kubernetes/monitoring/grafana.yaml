@@ -40,7 +40,8 @@ spec:
             port: 3000
         volumeMounts:
         - name: grafana-persistent-storage
-          mountPath: /var
+          #mountPath: /var
+          mountPath: /var/lib/grafana
       volumes:
       - name: grafana-persistent-storage
         emptyDir: {}
