@@ -13,7 +13,7 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/data"
+    path: "/mnt/data"
     
 ---
 kind: PersistentVolumeClaim
@@ -45,7 +45,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/data/postgresql/initdb"
+    path: "/mnt/data/postgresql/initdb"
 
 ---
 kind: PersistentVolumeClaim
