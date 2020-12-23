@@ -1,3 +1,8 @@
 # kube-deploy-lora
 
-documentation is coming
+* Run following commands:
+```
+kubectl 
+```
+
+more documentation is coming
