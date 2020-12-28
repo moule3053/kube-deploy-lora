@@ -83,10 +83,10 @@ data:
     # Server address or addresses.
     #
     # Set multiple addresses when connecting to a cluster.
-    #servers=[
-    #  "localhost:6379",
-    #]
-    url="redis://redis:6379"
+    servers=[
+      "redis:6379",
+    ]
+    #url="redis://redis:6379"
 
     # Password.
     #
