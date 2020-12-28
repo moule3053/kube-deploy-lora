@@ -88,30 +88,30 @@ data:
     # Password.
     #
     # Set the password when connecting to Redis requires password authentication.
-    password=""
+    #password=""
 
     # Database index.
     #
     # By default, this can be a number between 0-15.
-    database=0
+    #database=0
 
 
     # Redis Cluster.
     #
     # Set this to true when the provided URLs are pointing to a Redis Cluster
     # instance.
-    cluster=false
+    #cluster=false
 
     # Master name.
     #
     # Set the master name when the provided URLs are pointing to a Redis Sentinel
     # instance.
-    master_name=""
+    #master_name=""
 
     # Connection pool size.
     #
     # Default (when set to 0) is 10 connections per every CPU.
-    pool_size=0
+    #pool_size=0
 
 
     # Network-server settings.
