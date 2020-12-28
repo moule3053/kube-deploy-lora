@@ -37,10 +37,11 @@ spec:
               #    name: chirpstack-application-server-secrets
               #    key: redis_password
             - name: APPLICATION_SERVER__EXTERNAL_API__JWT_SECRET
-              valueFrom:
-                secretKeyRef:
-                  name: chirpstack-application-server-secrets
-                  key: jwt_secret
+              value: verysecret
+              #valueFrom:
+              #  secretKeyRef:
+              #    name: chirpstack-application-server-secrets
+              #    key: jwt_secret
             - name: APPLICATION_SERVER__INTEGRATION__MQTT__PASSWORD
               valueFrom:
                 secretKeyRef:
