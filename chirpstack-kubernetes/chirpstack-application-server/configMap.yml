@@ -86,7 +86,8 @@ data:
     #servers=[
     #  "localhost:6379",
     #]
-
+    url="redis://redis:6379"
+    
     # Password.
     #
     # Set the password when connecting to Redis requires password authentication.
