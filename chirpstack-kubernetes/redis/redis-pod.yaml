@@ -30,4 +30,4 @@ spec:
         name: example-redis-config
         items:
         - key: redis-config
-          path: redis-config
+          path: redis.conf
