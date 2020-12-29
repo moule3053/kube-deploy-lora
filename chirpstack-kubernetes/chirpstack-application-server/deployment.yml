@@ -29,8 +29,8 @@ spec:
             value: redis://redis:6379
           - name: APPLICATION_SERVER__INTEGRATION__MQTT__SERVER
             value: tcp://mosquitto:1883
-          - name: APPLICATION_SERVER__API__PUBLIC_HOST
-            value: localhost:8001
+          #- name: APPLICATION_SERVER__API__PUBLIC_HOST
+          #  value: localhost:8001
           - name: APPLICATION_SERVER__EXTERNAL_API__JWT_SECRET
             value: verysecret
           ports:
