@@ -9,6 +9,7 @@ metadata:
   labels:
     app: chirpstack-network-server
 spec:
+  type: NodePort
   ports:
     - name: port
       protocol: TCP

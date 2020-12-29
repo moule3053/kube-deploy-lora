@@ -10,7 +10,7 @@ metadata:
     app: chirpstack-application-server
 spec:
   #clusterIP: "None"
-  #type: NodePort
+  type: NodePort
   ports:
     - name: ui-port
       protocol: TCP
