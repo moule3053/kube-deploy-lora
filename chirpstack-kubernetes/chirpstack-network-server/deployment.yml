@@ -19,32 +19,21 @@ spec:
     spec:
       containers:
         - name: chirpstack-network-server
-          #image: chirpstack/chirpstack-network-server:3.10.0
           image: prrsjunior/chirpstack-network-server
           env:
             - name: POSTGRESQL__DSN
-              value: postgres://chirpstack_ns:chirpstack_ns@postgres/chirpstack_ns?sslmode=disable
-              #valueFrom:
-              #  secretKeyRef:
-              #    name: chirpstack-network-server-secrets
-              #    key: postgresql_dsn
+              value: postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable
             - name: REDIS__URL
               value: redis://redis:6379
-              #valueFrom:
-              #  secretKeyRef:
-              #    name: chirpstack-network-server-secrets
-              #    key: redis_password
-            - name: NETWORK_SERVER__GATEWAY__BACKEND__MQTT__PASSWORD
-              valueFrom:
-                secretKeyRef:
-                  name: chirpstack-network-server-secrets
-                  key: mqtt_password
-            - name: NETWORK_SERVER__GATEWAY__BACKEND__MQTT__CLIENT_ID
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
+            - name: NETWORK_SERVER__BAND__NAME
+              value: EU_863_870
+            - name: NETWORK_SERVER__GATEWAY__BACKEND__MQTT__SERVER
+              value: tcp://mosquitto:1883
+            - name: JOIN_SERVER__DEFAULT__SERVER
+              value: http://192.168.0.175:8009
+
           ports:
-            - name: tcp
+            - name: tcp-port
               containerPort: 8000
             - name: monitoring-port
               containerPort: 8004

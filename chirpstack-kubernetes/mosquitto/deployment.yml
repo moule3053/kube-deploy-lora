@@ -13,29 +13,34 @@ spec:
         app: mosquitto
     spec:
       containers:
-        - name: mosquitto
-          image: eclipse-mosquitto
-          ports:
-            - name: mqtt-port
-              containerPort: 1883
-          resources:
-            limits:
-              cpu: 500m
-              memory: 500Mi
-            requests:
-              cpu: 250m
-              memory: 250Mi
-          volumeMounts:
-            - name: mosquitto-config
-              mountPath: /mosquitto/config/mosquitto.conf
-              subPath: mosquitto.conf
-            - name: mosquitto-passwd
-              mountPath: /mosquitto/config/passwd
-              subPath: passwd
+      - name: mosquitto
+        image: eclipse-mosquitto
+        imagePullPolicy: Always
+        resources:
+          limits:
+            cpu: 0.5
+            memory: 500Mi
+        ports:
+          - containerPort: 9001
+          - containerPort: 8883
+          - containerPort: 1883
+        volumeMounts:
+          - name: mosquitto
+            mountPath: /srv/mqtt/config
+          - name: localtime
+            mountPath: /etc/localtime
+          - name: mosquitto-data
+            mountPath: /srv/mqtt/data
+          - name: mosquitto-log
+            mountPath: /srv/mqtt/log
+            
       volumes:
-        - name: mosquitto-config
-          configMap:
-            name: mosquitto-config
-        - name: mosquitto-passwd
-          secret:
-            secretName: mosquitto-passwd
+        - name: mosquitto
+          emptyDir: {}
+        - name: mosquitto-data
+          emptyDir: {}
+        - name: mosquitto-log
+          emptyDir: {}
+        - name: localtime
+          hostPath:
+            path: /etc/localtime

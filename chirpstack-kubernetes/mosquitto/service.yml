@@ -2,12 +2,15 @@ apiVersion: v1
 kind: Service
 metadata:
   name: mosquitto
+  labels:
+    app: mosquitto
 spec:
   type: NodePort
+#  clusterIP: None
   ports:
-    - name: mqtt-port
-      protocol: TCP
-      port: 1883
+    - port: 1883
       targetPort: 1883
   selector:
     app: mosquitto
+  #externalIPs:
+  # - 192.168.0.175
