@@ -6,7 +6,7 @@ metadata:
     app: redis
 spec:
   #type: NodePort
-  clusterIP: None
+  #clusterIP: None
   ports:
     - port: 6379
       targetPort: 6379
