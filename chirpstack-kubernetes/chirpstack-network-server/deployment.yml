@@ -22,7 +22,7 @@ spec:
           image: prrsjunior/chirpstack-network-server
           env:
             - name: POSTGRESQL__DSN
-              value: postgres://chirpstack_ns:chirpstack_ns@postgresql/chirpstack_ns?sslmode=disable
+              value: postgres://chirpstack_ns:chirpstack_ns@postgres/chirpstack_ns?sslmode=disable
             - name: REDIS__URL
               value: redis://redis:6379
             - name: NETWORK_SERVER__BAND__NAME
