@@ -37,7 +37,7 @@ spec:
               #    name: chirpstack-application-server-secrets
               #    key: redis_password
             - name: APPLICATION_SERVER__API__PUBLIC_HOST
-              value: 192.168.2.11:8001
+              value: localhost:8001
             - name: APPLICATION_SERVER__EXTERNAL_API__JWT_SECRET
               value: verysecret
               #valueFrom:

@@ -271,7 +271,8 @@ data:
       # this to the host:ip on which ChirpStack Network Server can reach ChirpStack Application Server.
       # The port must be equal to the port configured by the 'bind' flag
       # above.
-      public_host="chirpstack-application-server:8001"
+      #public_host="chirpstack-application-server:8001"
+      public_host="192.168.2.11:8001"
 
 
       # Settings for the "external api"
