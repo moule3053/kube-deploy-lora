@@ -1,5 +1,8 @@
 # Kubeadm Ansible Playbook
 
+This repo is forked from https://github.com/kairen/kubeadm-ansible
+few things are edited:
+
 ### Edited the fixed version of K8s in /roles/kubernetes/master/meta 
 ```
 kubelet=1.18.0-00", "kubeadm=1.18.0-00", "kubectl=1.18.0-00
