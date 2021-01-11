@@ -2,14 +2,31 @@
 
 ### Run following commands:
 ```
-kubectl apply -f ./mosquitto/
+#replace your cluster ip with [192.168.9.12] value
+export myclusterIP=192.168.9.12
+
+kubectl apply -f ./mosquitto/deployment.yml
+kubectl apply -f ./mosquitto/storage.yml
+envsubst < ./mosquitto/service.yml | kubectl apply -f -
+
 kubectl apply -f ./postgres/
 kubectl apply -k redis/.
+
 # kubectl apply -f ./chirpstack-gateway-bridge/
-kubectl apply -f ./chirpstack-network-server/
-kubectl apply -f ./chirpstack-application-server/
+
+kubectl apply -f ./chirpstack-network-server/configMap.yml
+kubectl apply -f ./chirpstack-network-server/deployment.yml
+envsubst < ./chirpstack-network-server/service.yml | kubectl apply -f -
+
+kubectl apply -f ./chirpstack-application-server/configMap.yml
+kubectl apply -f ./chirpstack-application-server/deployment.yml
+envsubst < ./chirpstack-application-server/service.yml | kubectl apply -f -
+
 kubectl apply -f ./monitoring/
-kubectl apply -f ./nodered/
+
+kubectl apply -f ./nodered/deployment.yml
+envsubst < ./nodered/service.yml | kubectl apply -f -
+
 sh ./postgres/create_db.sh
 ```
 
