@@ -25,9 +25,10 @@ cgroup_enable=memory
 ```
 auto eth0
 iface eth0 inet static
-address 192.168.thumb.pinky
+address 192.168.thumb.pinky (e.g. 192.168.1.10)
 netmask 255.255.255.0
-gateway 192.168.thumb.pinky
+gateway 192.168.thumb.pinky (e.g. 192.168.1.1)
+dns-nameservers 192.168.1.1 8.8.8.8
 ```
 
 ### Edit the hostname and password by
