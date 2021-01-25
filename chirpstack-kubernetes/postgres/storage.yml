@@ -13,7 +13,7 @@ spec:
     - ReadWriteMany
   persistentVolumeReclaimPolicy: Retain
   hostPath:
-    path: "/mnt/data"
+    path: "/data"
     
 ---
 kind: PersistentVolumeClaim
@@ -45,7 +45,7 @@ spec:
   accessModes:
     - ReadWriteMany
   hostPath:
-    path: "/mnt/data/postgres/initdb"
+    path: "/home/picocluster/chirpstack/chirpstack-docker/configuration/postgres/initdb"
 
 ---
 kind: PersistentVolumeClaim
