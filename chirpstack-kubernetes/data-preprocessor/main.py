@@ -7,6 +7,7 @@ import argparse
 
 from smart_water import smart_water
 from people_counter import people_counter
+from wind import wind
 
 devEUI_file = 'devEUI.json'
 with open(devEUI_file) as f:
@@ -37,7 +38,6 @@ def data_parser(payload_dict):
 
     devEUI = payload_dict["devEUI"]
 
-    
     sensor_location = get_sensor_location(devEUI)
     sensor_type = get_sensor_type(devEUI)
     print(sensor_type)
@@ -49,7 +49,7 @@ def data_parser(payload_dict):
         print("The sensor is not included yet")
         return None, None
     
-    mqtt_message['Sensor ID'] = devEUI
+    mqtt_message['SensorID'] = devEUI
     
     if 'data' not in payload_dict.keys():
         print('No data in sensor data')
@@ -59,11 +59,17 @@ def data_parser(payload_dict):
     data_hex = base64.b64decode(data).hex()
 
     if sensor_type == 'smart_water':
-        mqtt_dict = smart_water(data_hex)
+        protocol_file = 'smart_water.csv'
+        mqtt_dict = smart_water(data_hex, protocol_file)
+    elif sensor_type == 'smart_water_lon':
+        protocol_file = 'smart_water_lon.csv'
+        mqtt_dict = smart_water(data_hex, protocol_file)  
     elif sensor_type == 'people_counter':
         mqtt_dict = people_counter(data_hex)
+    elif sensor_type == 'wind':
+        mqtt_dict = wind(data_hex)
 
-    mqtt_message['Sensor Data'] = mqtt_dict
+    mqtt_message['SensorData'] = mqtt_dict
 
 
     return topic, mqtt_message

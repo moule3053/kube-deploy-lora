@@ -2,9 +2,8 @@
 
 import pandas as pd
 import struct
-import math
 
-protocol_file = 'smart_water.csv'
+
 
 # 1 byte: sequence number
 # 1 byte: length
@@ -17,13 +16,12 @@ protocol_file = 'smart_water.csv'
 #     #     # row variable is a dictionary that represents a row in csv
 #     #     print(row)
 
-df = pd.read_csv(protocol_file)
+
 
 # print(df['Sensor'], df['SENSORIDBinary'])
 
 
-def get_sensor_data(sensor_id):
-
+def get_sensor_data(sensor_id, df):
     sensor_name = df['Sensor'][df['SENSORIDBinary'] == sensor_id].values[0]
     data_size = df['BinarySizeperField'][df['SENSORIDBinary'] == sensor_id].values[0]
     data_type = df['BinaryTypeofvariable'][df['SENSORIDBinary'] == sensor_id].values[0]
@@ -33,14 +31,16 @@ def get_sensor_data(sensor_id):
     return sensor_name, data_size, data_type, data_precision, data_unit
 
 
-def smart_water(data_hex):
+def smart_water(data_hex, protocol_file):
 
+    df = pd.read_csv(protocol_file)
+    
     payload_dict = {}
 
     index_start = 0
     index_end = index_start + 2 * 1
     sequence_number = int(data_hex[index_start:index_end], 16)
-    payload_dict['Sequence Number'] = sequence_number
+    payload_dict['SequenceNumber'] = sequence_number
 
     index_start = index_end
     index_end = index_start + 2 * 1
@@ -53,7 +53,7 @@ def smart_water(data_hex):
         index_end = index_start + 2 * 1
 
         sensor_id = int(data_hex[index_start:index_end], 16)
-        sensor_name, data_size, data_type, data_precision, data_unit = get_sensor_data(sensor_id)
+        sensor_name, data_size, data_type, data_precision, data_unit = get_sensor_data(sensor_id, df)
 
         index_start = index_end
         index_end = index_start + 2 * data_size
