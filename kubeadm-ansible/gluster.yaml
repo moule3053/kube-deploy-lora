@@ -1,0 +1,24 @@
+---
+
+- hosts: node
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: "GlusterFS role"
+      include_role:
+        name: glusterfs/node
+      when: "additional_features.glusterfs"
+      #run_once: yes
+      tags: glusterfs-node
+
+- hosts: master
+  gather_facts: yes
+  become: yes
+  tasks:
+    - name: "GlusterFS role"
+      include_role:
+        name: glusterfs/master
+      when: "additional_features.glusterfs"
+      run_once: yes
+      tags: glusterfs-master
+
