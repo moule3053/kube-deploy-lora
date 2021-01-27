@@ -27,20 +27,26 @@ spec:
         volumeMounts:
           - name: mosquitto
             mountPath: /srv/mqtt/config
+            readOnly: false
           - name: localtime
             mountPath: /etc/localtime
           - name: mosquitto-data
             mountPath: /srv/mqtt/data
+            readOnly: false
           - name: mosquitto-log
             mountPath: /srv/mqtt/log
+            readOnly: false
             
       volumes:
         - name: mosquitto
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: mosquitto-config-pvc
         - name: mosquitto-data
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: mosquitto-data-pvc
         - name: mosquitto-log
-          emptyDir: {}
+          persistentVolumeClaim:
+            claimName: mosquitto-logs-pvc
         - name: localtime
           hostPath:
             path: /etc/localtime

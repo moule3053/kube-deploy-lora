@@ -5,8 +5,14 @@
 #replace your cluster ip with [192.168.9.12] value
 export myclusterIP=192.168.9.12
 
-kubectl apply -f ./mosquitto/deployment.yml
+# Generate GlusterFS Endpoints files
+# Edit the IP address range in the file first
+
+./generate_glusterfs_endpoints.sh
+
+kubectl apply -f mosquitto/mosquitto-glusterfs-endpoint.yaml
 kubectl apply -f ./mosquitto/storage.yml
+kubectl apply -f ./mosquitto/deployment.yml
 envsubst < ./mosquitto/service.yml | kubectl apply -f -
 
 kubectl apply -f ./postgres/

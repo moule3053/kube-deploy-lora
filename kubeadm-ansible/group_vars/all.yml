@@ -2,7 +2,8 @@
 # ansible_user: root
 
 # Kubernetes
-kube_version: v1.18.0
+kube_version: v1.19.0
+kube_packages_version: 1.19.0-00 
 token: b0f7b8.8d1767876297d85c
 
 # 1.8.x feature: --feature-gates SelfHosting=true
@@ -40,7 +41,14 @@ additional_features:
   helm: false
   metallb: false
   healthcheck: false
+  glusterfs: true
 
 # temporary directory used by additional features
 tmp_dir: /tmp/kubeadm-ansible-files
+
+# GlusterFS directories
+
+mosquitto_volume: /data/glusterfs/brick1/mosquitto_volume
+postgre_volume: /data/glusterfs/brick1/postgre_volume
+influxdb_volume: /data/glusterfs/brick1/influxdb_volume
 
