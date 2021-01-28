@@ -31,6 +31,15 @@ gateway 192.168.1.1
 dns-nameservers 192.168.1.1 8.8.8.8
 ```
 
+### Update the /etc/hosts with your cluster IPs
+```
+192.168.1.10 pc0
+192.168.1.11 pc1
+192.168.1.12 pc2
+...
+192.168.1.N pcN
+```
+
 ### Edit the hostname and password by
 ```
 sudo raspi-config
