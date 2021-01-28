@@ -7,8 +7,7 @@
 export myclusterIP=192.168.1.10
 ```
 
-### Generate GlusterFS Endpoints files
-### Edit the IP address range in the file first
+### Generate GlusterFS Endpoints files: edit the IP address range in the file first
 ```
 ./generate_glusterfs_endpoints.sh
 ```
