@@ -11,5 +11,5 @@ spec:
       targetPort: 8086
   selector:
     app: influx
-#  externalIPs: #change the following Ip address according to your master node IP
-#  - $myclusterIP
+  externalIPs: #change the following Ip address according to your master node IP
+  - $myclusterIP
