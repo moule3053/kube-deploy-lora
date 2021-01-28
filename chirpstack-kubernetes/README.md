@@ -1,14 +1,18 @@
 # kube-deploy-lora
 
-### Run following commands:
+## Deploy
+### Run following to deploy all:
+```
+sh ./deploy_all.sh
+```
+
+### Or run following commands for debugging:
 ```
 #replace your cluster ip with [192.168.9.12] value
 export myclusterIP=192.168.9.12
 
 # Generate GlusterFS Endpoints files
 # Edit the IP address range in the file first
-
-mkdir influxdb # if it doesn't exist
 
 ./generate_glusterfs_endpoints.sh
 
@@ -59,7 +63,13 @@ port:8086  /influxdb/service.yml
 port:1880  /nodered/service.yml
 ```
 
-### For deleting everything:
+## Delete
+### Run following to delete all:
+```
+sh ./delete_all.sh
+```
+
+### Or run following commands for deleting 1 by 1:
 ```
 kubectl delete -f ./mosquitto/
 kubectl delete -f ./influxdb/
