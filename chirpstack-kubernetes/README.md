@@ -8,6 +8,8 @@ export myclusterIP=192.168.9.12
 # Generate GlusterFS Endpoints files
 # Edit the IP address range in the file first
 
+mkdir influxdb # if it doesn't exist
+
 ./generate_glusterfs_endpoints.sh
 
 kubectl apply -f mosquitto/mosquitto-glusterfs-endpoint.yaml
