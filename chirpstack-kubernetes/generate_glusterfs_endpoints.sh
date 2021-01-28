@@ -6,7 +6,7 @@
 echo "apiVersion: v1
 kind: Endpoints
 metadata:
-  name: mosquitto-gluster 
+  name: mosquitto-gluster
 subsets:" > mosquitto/mosquitto-glusterfs-endpoint.yaml
 
 echo "apiVersion: v1
@@ -24,21 +24,19 @@ subsets:" > influxdb/influxdb-glusterfs-endpoint.yaml
 
 for i in {21..24}
 do
-echo "- addresses:              
+echo "- addresses:
   - ip: 192.168.9.$i
-  ports:                  
+  ports:
   - port: 49152
     protocol: TCP" >> mosquitto/mosquitto-glusterfs-endpoint.yaml
-echo "- addresses:              
+echo "- addresses:
   - ip: 192.168.9.$i
-  ports:                  
+  ports:
   - port: 49153
     protocol: TCP" >> postgres/postgre-glusterfs-endpoint.yaml
-echo "- addresses:              
+echo "- addresses:
   - ip: 192.168.9.$i
-  ports:                  
+  ports:
   - port: 49154
-    protocol: TCP" >> influxdb/influxdb-glusterfs-endpoint.yaml    
+    protocol: TCP" >> influxdb/influxdb-glusterfs-endpoint.yaml
 done
-
-
