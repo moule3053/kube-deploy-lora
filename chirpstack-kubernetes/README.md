@@ -39,8 +39,8 @@ kubectl apply -f ./monitoring/configmap.yaml
 kubectl apply -f ./monitoring/kube-state-metrics.yaml
 kubectl apply -f ./monitoring/node-exporter.yaml
 kubectl apply -f ./monitoring/rbac.yaml
-envsubst < ./monitoring/grafana.yml | kubectl apply -f -
-envsubst < ./monitoring/prometheus.yml | kubectl apply -f -
+envsubst < ./monitoring/grafana.yaml | kubectl apply -f -
+envsubst < ./monitoring/prometheus.yaml | kubectl apply -f -
 
 kubectl apply -f ./nodered/deployment.yml
 envsubst < ./nodered/service.yml | kubectl apply -f -
