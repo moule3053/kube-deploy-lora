@@ -35,5 +35,3 @@ envsubst < ./monitoring/prometheus.yml | kubectl apply -f -
 
 kubectl apply -f ./nodered/deployment.yml
 envsubst < ./nodered/service.yml | kubectl apply -f -
-
-sh ./postgres/create_db.sh
