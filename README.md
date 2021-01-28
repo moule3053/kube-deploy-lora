@@ -56,7 +56,3 @@ ssh-copy-id pi@name
 ```
 
 ### The Pi is now ready to run ansible scripts
-
-
-
-more documentation is coming

@@ -5,6 +5,7 @@
 ```
 sh ./deploy_all.sh
 ```
+
 ### After the pod creation:
 ```
 sh ./postgres/create_db.sh
@@ -87,7 +88,3 @@ kubectl delete -f ./nodered/
 kubectl delete pvc mosquitto postgres-pv-claim postgresinit-pv-claim
 kubectl delete pv mosquitto-pv-volume postgres-pv-volume postgresinit-pv-volume
 ```
-
-
-
-more documentation is coming
