@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 kubectl delete -f ./mosquitto/
 kubectl delete -f ./influxdb/
