@@ -5,6 +5,10 @@
 ```
 sh ./deploy_all.sh
 ```
+### After the pod creation:
+```
+sh ./postgres/create_db.sh
+```
 
 ### Or run following commands for debugging:
 ```
