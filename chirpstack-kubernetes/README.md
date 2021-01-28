@@ -1,13 +1,30 @@
 # kube-deploy-lora
 
-### Run following commands:
+## Deploy
+### Run following to deploy all:
+```
+sh ./deploy_all.sh
+```
+
+### Or run following commands for debugging:
 ```
 #replace your cluster ip with [192.168.9.12] value
 export myclusterIP=192.168.9.12
 
-kubectl apply -f ./mosquitto/deployment.yml
+# Generate GlusterFS Endpoints files
+# Edit the IP address range in the file first
+
+./generate_glusterfs_endpoints.sh
+
+kubectl apply -f ./mosquitto/mosquitto-glusterfs-endpoint.yaml
 kubectl apply -f ./mosquitto/storage.yml
+kubectl apply -f ./mosquitto/deployment.yml
 envsubst < ./mosquitto/service.yml | kubectl apply -f -
+
+kubectl apply -f ./influxdb/influxdb-glusterfs-endpoint.yaml
+kubectl apply -f ./influxdb/deployment.yml
+kubectl apply -f ./influxdb/storage.yml
+envsubst < ./influxdb/service.yml | kubectl apply -f -
 
 kubectl apply -f ./postgres/
 kubectl apply -k redis/.
@@ -22,7 +39,12 @@ kubectl apply -f ./chirpstack-application-server/configMap.yml
 kubectl apply -f ./chirpstack-application-server/deployment.yml
 envsubst < ./chirpstack-application-server/service.yml | kubectl apply -f -
 
-kubectl apply -f ./monitoring/
+kubectl apply -f ./monitoring/configmap.yaml
+kubectl apply -f ./monitoring/kube-state-metrics.yaml
+kubectl apply -f ./monitoring/node-exporter.yaml
+kubectl apply -f ./monitoring/rbac.yaml
+envsubst < ./monitoring/grafana.yaml | kubectl apply -f -
+envsubst < ./monitoring/prometheus.yaml | kubectl apply -f -
 
 kubectl apply -f ./nodered/deployment.yml
 envsubst < ./nodered/service.yml | kubectl apply -f -
@@ -33,15 +55,24 @@ sh ./postgres/create_db.sh
 ### external IP (192.168.2.11 for now) is exposed in:
 ```
 port:8080  /chirpstack-application-server/service.yml
-port:8080  /chirpstack-network-server/service.yml
+port:8000  /chirpstack-network-server/service.yml
 port:9090  /monitoring/prometheus.yaml
 port:3000  /monitoring/grafana.yaml
+port:1883  /mosquitto/service.yml
+port:8086  /influxdb/service.yml
 port:1880  /nodered/service.yml
 ```
 
-### For deleting everything:
+## Delete
+### Run following to delete all:
+```
+sh ./delete_all.sh
+```
+
+### Or run following commands for deleting 1 by 1:
 ```
 kubectl delete -f ./mosquitto/
+kubectl delete -f ./influxdb/
 kubectl delete -f ./postgres/
 kubectl delete -k redis/.
 # kubectl delete -f ./chirpstack-gateway-bridge/

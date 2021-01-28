@@ -63,4 +63,4 @@ spec:
   selector:
     app: grafana
   externalIPs:
-  - 192.168.2.11
+  - $myclusterIP

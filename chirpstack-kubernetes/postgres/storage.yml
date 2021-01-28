@@ -3,17 +3,19 @@ apiVersion: v1
 metadata:
   name: postgres-pv-volume
   labels:
-    type: local
     app: postgres
+    vol: db 
 spec:
   storageClassName: manual
   capacity:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
+  glusterfs:
+    endpoints: postgre-gluster
+    path: /postgre_volume
+    readOnly: false      
   persistentVolumeReclaimPolicy: Retain
-  hostPath:
-    path: "/data"
     
 ---
 kind: PersistentVolumeClaim
@@ -22,6 +24,7 @@ metadata:
   name: postgres-pv-claim
   labels:
     app: postgres
+    vol: db
 spec:
   storageClassName: manual
   accessModes:
@@ -36,24 +39,26 @@ apiVersion: v1
 metadata:
   name: postgresinit-pv-volume
   labels:
-    type: local
-    app: postgresinit
+    app: postgres
+    vol: init
 spec:
   storageClassName: manual
   capacity:
     storage: 5Gi
   accessModes:
     - ReadWriteMany
-  hostPath:
-    path: "/home/picocluster/chirpstack/chirpstack-docker/configuration/postgres/initdb"
-
+  glusterfs:
+    endpoints: postgre-gluster
+    path: /postgre_volume
+    readOnly: false
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
   name: postgresinit-pv-claim
   labels:
-    app: postgresinit
+    app: postgres
+    vol: init
 spec:
   storageClassName: manual
   accessModes:

@@ -1,17 +1,20 @@
 # Kubeadm Ansible Playbook
 
+<mark>before running, edit the hosts.ini file with your IP range</mark>
+
+
 This repo is forked from https://github.com/kairen/kubeadm-ansible
 few things are edited:
 
-### Edited the fixed version of K8s in /roles/kubernetes/master/meta 
+* Edited the fixed version of K8s in /roles/kubernetes/master/meta 
 ```
 kubelet=1.18.0-00", "kubeadm=1.18.0-00", "kubectl=1.18.0-00
 ```
-### Edited the fixed version of K8s in /roles/kubeadm/node/meta
+* Edited the fixed version of K8s in /roles/kubeadm/node/meta
 ```
 kubelet=1.18.0-00", "kubeadm=1.18.0-00
 ```
-### Edited the network implementation in /group_vars/all.yml
+* Edited the network implementation in /group_vars/all.yml
 ```
 kube_version: v1.18.0
 ...
