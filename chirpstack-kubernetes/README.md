@@ -44,6 +44,8 @@ port:8080  /chirpstack-application-server/service.yml
 port:8080  /chirpstack-network-server/service.yml
 port:9090  /monitoring/prometheus.yaml
 port:3000  /monitoring/grafana.yaml
+port:1883  /mosquitto/service.yml
+port:8086  /influxdb/service.yml
 port:1880  /nodered/service.yml
 ```
 
