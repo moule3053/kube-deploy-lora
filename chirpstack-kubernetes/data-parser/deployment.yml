@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: data-parser
+  labels:
+    app: data-parser
+spec:
+  selector:
+    matchLabels:
+      app: data-parser
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: data-parser
+    spec:
+      containers:
+      - name: data-parser
+        image: lillywu/sensor_parser:v1
+        env:
+        - name: MQTT_SERVER
+          value: mosquitto

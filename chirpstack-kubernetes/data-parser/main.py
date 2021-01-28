@@ -5,15 +5,17 @@ import json
 import base64
 import argparse
 
-from smart_water import smart_water
-from people_counter import people_counter
-from wind import wind
 
-devEUI_file = 'devEUI.json'
+from parser.smart_water import smart_water
+from parser.people_counter import people_counter
+from parser.wind import wind
+
+
+devEUI_file = 'conf/devEUI.json'
 with open(devEUI_file) as f:
   devEUI_dict = json.load(f)
 
-location_file = 'location.json'
+location_file = 'conf/location.json'
 with open(location_file) as f:
   location_dict = json.load(f)
 
@@ -40,7 +42,7 @@ def data_parser(payload_dict):
 
     sensor_location = get_sensor_location(devEUI)
     sensor_type = get_sensor_type(devEUI)
-    print(sensor_type)
+    # print(sensor_type)
 
     #TODO: define the topic
     if sensor_location != None: 
@@ -59,10 +61,10 @@ def data_parser(payload_dict):
     data_hex = base64.b64decode(data).hex()
 
     if sensor_type == 'smart_water':
-        protocol_file = 'smart_water.csv'
+        protocol_file = './parser/smart_water.csv'
         mqtt_dict = smart_water(data_hex, protocol_file)
     elif sensor_type == 'smart_water_lon':
-        protocol_file = 'smart_water_lon.csv'
+        protocol_file = './parser/smart_water_lon.csv'
         mqtt_dict = smart_water(data_hex, protocol_file)  
     elif sensor_type == 'people_counter':
         mqtt_dict = people_counter(data_hex)
@@ -77,7 +79,6 @@ def data_parser(payload_dict):
 # This is the Subscriber
 def on_connect(client, userdata, flags, rc):
     print("Connected with result code " + str(rc))
-    #TODO: topics are dynamic to the application ID
     client.subscribe("application/#")
 
 def on_message(client, userdata, msg):
@@ -91,45 +92,24 @@ def on_message(client, userdata, msg):
         mqtt_message_string = json.dumps(mqtt_message, ensure_ascii=False)
     
         print(topic, mqtt_message_string)
-
-    #TODO: Create another client to publish
         client.publish(topic, mqtt_message_string)
 
 
-# if __name__ == '__main__':
-#
-#     parser = argparse.ArgumentParser()
-#
-#     # Required positional argument
-#     parser.add_argument('--sub_ip', type=str, required=True,
-#                         help='the mqtt server ip that it subscribes')
-#
-#     # Optional positional argument
-#     parser.add_argument('--sub_port', type=int, default=1883,
-#                         help='the mqtt server port that it subscribes')
-#
-#     # Optional argument
-#     parser.add_argument('--pub_ip', type=str,
-#                         help='the mqtt server ip that it publishes')  # required=True,
-#
-#     # Switch
-#     parser.add_argument('--pub_port', type=int, default=1883,
-#                         help='the mqtt server port that it publishes')
-#
-#     args = parser.parse_args()
-#
-#     sub_ip = args.sub_ip
-#     sub_port = args.sub_port
-#     pub_ip = args.pub_ip
-#     pub_port = args.pub_port
+if __name__ == '__main__':
 
-sub_ip = "192.168.0.175"
-sub_port = 1883
+    parser = argparse.ArgumentParser()
 
-client = mqtt.Client()
-client.connect(sub_ip, sub_port, 60)
+    # Required positional argument
+    parser.add_argument('mqtt_server', type=str,
+                        help='the ip address of mqtt server')
+    
+    args = parser.parse_args()
+    mqtt_server = args.mqtt_server
 
-client.on_connect = on_connect
-client.on_message = on_message
-
-client.loop_forever()
+    client = mqtt.Client()
+    client.connect(mqtt_server)
+    
+    client.on_connect = on_connect
+    client.on_message = on_message
+    
+    client.loop_forever()
