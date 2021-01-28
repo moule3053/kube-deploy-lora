@@ -1,26 +1,25 @@
 # kube-deploy-lora
 
 ## Deploy
+
+### Replace your cluster ip with [192.168.9.12] value
+```
+export myclusterIP=192.168.1.10
+```
+
+### Generate GlusterFS Endpoints files
+### Edit the IP address range in the file first
+```
+./generate_glusterfs_endpoints.sh
+```
+
 ### Run following to deploy all:
 ```
 sh ./deploy_all.sh
 ```
 
-### After the pod creation:
-```
-sh ./postgres/create_db.sh
-```
-
 ### Or run following commands for debugging:
 ```
-#replace your cluster ip with [192.168.9.12] value
-export myclusterIP=192.168.9.12
-
-# Generate GlusterFS Endpoints files
-# Edit the IP address range in the file first
-
-./generate_glusterfs_endpoints.sh
-
 kubectl apply -f ./mosquitto/mosquitto-glusterfs-endpoint.yaml
 kubectl apply -f ./mosquitto/storage.yml
 kubectl apply -f ./mosquitto/deployment.yml
@@ -53,11 +52,14 @@ envsubst < ./monitoring/prometheus.yaml | kubectl apply -f -
 
 kubectl apply -f ./nodered/deployment.yml
 envsubst < ./nodered/service.yml | kubectl apply -f -
+```
 
+### After the pod creation:
+```
 sh ./postgres/create_db.sh
 ```
 
-### external IP (192.168.2.11 for now) is exposed in:
+### external IP is exposed in:
 ```
 port:8080  /chirpstack-application-server/service.yml
 port:8000  /chirpstack-network-server/service.yml
