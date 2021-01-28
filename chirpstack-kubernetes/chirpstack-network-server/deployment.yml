@@ -29,8 +29,6 @@ spec:
               value: EU_863_870
             - name: NETWORK_SERVER__GATEWAY__BACKEND__MQTT__SERVER
               value: tcp://mosquitto:1883
-            #- name: JOIN_SERVER__DEFAULT__SERVER
-            #  value: http://192.168.0.175:8009
 
           ports:
             - name: tcp-port

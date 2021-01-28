@@ -42,7 +42,6 @@ spec:
               containerPort: 8001
             - name: monitoring-port
               containerPort: 8101
-              #containerPort: 9095
           resources:
             limits:
               cpu: 500m

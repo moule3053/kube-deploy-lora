@@ -1,16 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
+  name: influx
   labels:
     app: influx
-  name: influx
 spec:
   type: NodePort
   ports:
     - port: 8086
       targetPort: 8086
-      protocol: TCP
   selector:
     app: influx
-  externalIPs: #change the following Ip address according to your master node IP
-  - $myclusterIP
+#  externalIPs: #change the following Ip address according to your master node IP
+#  - $myclusterIP
