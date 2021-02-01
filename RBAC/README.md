@@ -1,6 +1,8 @@
 # Role-based access control
-The scripts are using two environment variables:$varnamespace and $varsaname.
-Change them with your desired team name you want to create.
+The scripts are using two environment variables:
+	$varnamespace is the namespace
+	and 
+	$varsaname the service account name
 
 ## Create necessary objects for the admin role of each team 
 	./createRoles.sh
