@@ -9,6 +9,7 @@ import argparse
 from parser.smart_water import smart_water
 from parser.people_counter import people_counter
 from parser.wind import wind
+from parser.traffic_counter import traffic_counter
 
 
 devEUI_file = 'conf/devEUI.json'
@@ -70,6 +71,8 @@ def data_parser(payload_dict):
         mqtt_dict = people_counter(data_hex)
     elif sensor_type == 'wind':
         mqtt_dict = wind(data_hex)
+    elif sensor_type == 'traffic_counter':
+        mqtt_dict = traffic_counter(data_hex)
 
     mqtt_message['SensorData'] = mqtt_dict
 
