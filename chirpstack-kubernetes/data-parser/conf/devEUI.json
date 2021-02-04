@@ -2,5 +2,6 @@
   "smart_water": "0004a30b00f00a1f",
   "smart_water_lon": "0004a30b00efc1f1",
   "people_counter": ["3534383967398e12", "3534383966395d14"],
-  "wind": ["70b3d57ba00020e5", "70b3d57ba00020e6", "70b3d57ba00020e7"]
+  "wind": ["70b3d57ba00020e5", "70b3d57ba00020e6", "70b3d57ba00020e7"],
+  "traffic_counter":["343433357c377506"]
 }
