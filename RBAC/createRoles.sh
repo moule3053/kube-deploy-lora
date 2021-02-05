@@ -2,7 +2,7 @@ export varnamespace=team1-namespace
 export varsaname=team1-sa
 
 #create namespace
-envsubst < ./my-namespace.yaml | kubectl apply -f -
+envsubst < ./team-namespace.yaml | kubectl apply -f -
 
 #create service account for the team
 envsubst < ./team-sa-create.yaml | kubectl apply -f -
