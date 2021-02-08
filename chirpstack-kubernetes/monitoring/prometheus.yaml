@@ -39,13 +39,13 @@ spec:
           limits:
             cpu: 500m
             memory: 2500Mi
-      serviceAccountName: prometheus    
+      serviceAccountName: prometheus
       volumes:
       - name: data
         emptyDir: {}
       - name: config-volume
         configMap:
-          name: prometheus-config      
+          name: prometheus-config
 ---
 kind: Service
 apiVersion: v1
