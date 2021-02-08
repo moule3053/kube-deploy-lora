@@ -2,7 +2,7 @@ This is an application for parsing data collected from sensors in La Marina Vale
 
 It subscribes to the MQTT where the chirpstack application server publishes to, then 
 parses the sensor data accroding to the types of sensor, and publishes the parsed data 
-to the MQTT again. 
+to the MQTT and Influxdb.
 
 The topic for each device is: "SensorType/SensorLocation"
 

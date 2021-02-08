@@ -4,7 +4,8 @@ import paho.mqtt.client as mqtt
 import json
 import base64
 import argparse
-
+from influxdb import InfluxDBClient
+from datetime import datetime
 
 from parser.smart_water import smart_water
 from parser.people_counter import people_counter
@@ -50,13 +51,13 @@ def data_parser(payload_dict):
         topic = sensor_type + "/" + sensor_location
     else:
         print("The sensor is not included yet")
-        return None, None
+        return None, None, None
     
     mqtt_message['SensorID'] = devEUI
     
     if 'data' not in payload_dict.keys():
         print('No data in sensor data')
-        return None, None 
+        return None, None, None
 
     data = payload_dict['data']
     data_hex = base64.b64decode(data).hex()
@@ -75,9 +76,36 @@ def data_parser(payload_dict):
         mqtt_dict = traffic_counter(data_hex)
 
     mqtt_message['SensorData'] = mqtt_dict
+    
 
+    # Create point for updating influxdb
+    influxdb_dict = {}
+    tags_dict = {}
+    now = datetime.now()
+    now_ISO8601 = now.isoformat()
 
-    return topic, mqtt_message
+    influxdb_dict["measurement"] = sensor_type
+    influxdb_dict["time"] = now_ISO8601
+    tags_dict["topic"] = topic
+    influxdb_dict["tags"] = tags_dict
+    influxdb_dict["fields"] = mqtt_dict    
+
+    # print(topic, mqtt_message, influxdb_dict)
+    return topic, mqtt_message, influxdb_dict
+
+def influxdb_update(influxdb_server, influxdb_dict):
+    host = influxdb_server
+    port = 8086
+    user = 'fogguru'
+    password = 'fogguru'
+    dbname = 'sensor_data'
+    
+    client = InfluxDBClient(host, port, user, password, dbname)
+    points = []
+    points.append(influxdb_dict)
+    print("Write points: {0}".format(points))
+    client.write_points(points)
+    
 
 # This is the Subscriber
 def on_connect(client, userdata, flags, rc):
@@ -89,14 +117,16 @@ def on_message(client, userdata, msg):
     payload_dict = json.loads(payload) # dict
     print(payload_dict)
 
-    topic, mqtt_message = data_parser(payload_dict)
+    topic, mqtt_message, influxdb_dict = data_parser(payload_dict)
 
     if topic is not None and mqtt_message is not None: 
         mqtt_message_string = json.dumps(mqtt_message, ensure_ascii=False)
     
         print(topic, mqtt_message_string)
         client.publish(topic, mqtt_message_string)
-
+        
+        influxdb_update(mqtt_server, influxdb_dict)
+        
 
 if __name__ == '__main__':
 
@@ -107,6 +137,7 @@ if __name__ == '__main__':
                         help='the ip address of mqtt server')
     
     args = parser.parse_args()
+    global mqtt_server
     mqtt_server = args.mqtt_server
 
     client = mqtt.Client()
