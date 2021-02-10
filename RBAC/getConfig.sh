@@ -10,7 +10,7 @@ namespace=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.
 clustername=picocluster1
 username=team1-picocluster1-user
 contextname=team1-pico1-context
-configname=team1-config
+configname=team1-pico1-config
 
 echo "
 apiVersion: v1
@@ -32,4 +32,4 @@ users:
 - name: ${username}
   user:
     token: ${token}
-" > team1-config
+" > ${configname}
