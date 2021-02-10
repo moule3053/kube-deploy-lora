@@ -20,3 +20,16 @@ Windows OS: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kube
 
 ### Get the kubeconfig for your cluster
 
+	./getConfig.sh
+
+### Merge the kubeconfigs for each team
+
+	KUBECONFIG=~/.kube/team1-pico1-config:~/.kube/team1-pico2-config
+
+	kubectl config view --flatten > ~/.kube/allconfigs
+
+### Test the kubeconfigs for each team
+
+	kubectl config get-contexts
+
+	kubectl --context [the-context-name] get pods
