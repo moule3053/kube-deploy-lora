@@ -1,5 +1,5 @@
-export varnamespace=team2-namespace
-export varsaname=team2-sa
+export varnamespace=team1-namespace
+export varsaname=team1-sa
 
 #get service account properties
 kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o yaml
