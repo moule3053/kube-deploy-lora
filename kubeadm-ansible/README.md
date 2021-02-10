@@ -36,6 +36,27 @@ System requirements:
   - Deployment environment must have Ansible `2.4.0+`
   - Master and nodes must have passwordless SSH access
 
+### GlusterFS
+
+We use glusterfs on the pico clusters as the file system on which Kubernetes creates PersistentVolumes.
+
+Before running Ansible, make sure if there are any gluster volumes running by using the command `sudo gluster volume status` on the master node.
+
+If there are any gluster volumes, first stop and delete them.
+
+For example, run the following command to stop and delete the volumes `mosquitto_volume`, `postgre_volume` and `influxdb_volume`:
+
+```
+sudo gluster volume stop mosquitto_volume
+sudo gluster volume stop postgre_volume
+sudo gluster volume stop influxdb_volume
+sudo gluster volume delete mosquitto_volume
+sudo gluster volume delete influxdb_volume
+sudo gluster volume delete postgre_volume
+```
+
+Also, make sure that the glusterfs volume replicas are set to `3` when running on PicoCluster10, and `2` when running on PicoCluster5.
+
 # Usage
 
 Add the system information gathered above into a file called `hosts.ini`. For example:
