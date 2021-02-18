@@ -52,3 +52,5 @@ mosquitto_volume: /data/glusterfs/brick1/mosquitto_volume
 postgre_volume: /data/glusterfs/brick1/postgre_volume
 influxdb_volume: /data/glusterfs/brick1/influxdb_volume
 
+master_vpn: 172.20.192.21
+
