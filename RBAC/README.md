@@ -8,7 +8,7 @@ The scripts are using two environment variables:
 	./createRoles.sh
 
 ### Get the token for the role to login into the dashboard
-	./createToken
+	./createToken.sh
 
 ### Install kubectl in your computer using the guide provided by the official Kubernetes website
 
@@ -19,14 +19,20 @@ Mac OS: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-
 Windows OS: https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl-on-windows
 
 ### Get the kubeconfig for your cluster
+Change the value of variables according to the cluster IP and cluster name
+$picoip
+$varnamespace
+$varsaname
+$clustername
+$username
+$contextname
+$configname
 
 	./getConfig.sh
 
 ### Merge the kubeconfigs for each team
 
-	KUBECONFIG=~/.kube/team1-pico1-config:~/.kube/team1-pico2-config
-
-	kubectl config view --flatten > ~/.kube/allconfigs
+	KUBECONFIG=~/.kube/team1-pico1-config:~/.kube/team1-pico2-config:~/.kube/team1-pico3-config:~/.kube/team1-pico4-config:~/.kube/team1-pico5-config:~/.kube/team1-pico6-config:~/.kube/team1-pico7-config kubectl config view --flatten > ~/.kube/team1-all-config
 
 ### Test the kubeconfigs for each team
 

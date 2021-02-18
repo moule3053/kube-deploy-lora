@@ -52,3 +52,6 @@ mosquitto_volume: /data/glusterfs/brick1/mosquitto_volume
 postgre_volume: /data/glusterfs/brick1/postgre_volume
 influxdb_volume: /data/glusterfs/brick1/influxdb_volume
 
+#the IP address of the master node in the VPN interface
+master_vpn: 172.20.192.21
+
