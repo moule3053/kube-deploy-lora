@@ -22,7 +22,7 @@ metadata:
 subsets:" > influxdb/influxdb-glusterfs-endpoint.yaml
 
 
-for i in {66..69}
+for i in {21..29}
 do
 echo "- addresses:
   - ip: 192.168.9.$i

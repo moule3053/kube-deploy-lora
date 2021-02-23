@@ -36,7 +36,9 @@ spec:
           - name: mosquitto-log
             mountPath: /srv/mqtt/log
             readOnly: false
-            
+          - name: mosquitto-config
+            mountPath: /mosquitto/config/mosquitto.conf
+            subPath: mosquitto.conf             
       volumes:
         - name: mosquitto
           persistentVolumeClaim:
@@ -50,3 +52,6 @@ spec:
         - name: localtime
           hostPath:
             path: /etc/localtime
+        - name: mosquitto-config
+          configMap:
+            name: mosquitto-config

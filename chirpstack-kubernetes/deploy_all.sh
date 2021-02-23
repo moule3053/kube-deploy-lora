@@ -2,6 +2,7 @@
 
 kubectl apply -f ./mosquitto/mosquitto-glusterfs-endpoint.yaml
 kubectl apply -f ./mosquitto/storage.yml
+kubectl apply -f ./mosquitto/configmap.yaml
 kubectl apply -f ./mosquitto/deployment.yml
 envsubst < ./mosquitto/service.yml | kubectl apply -f -
 
