@@ -55,7 +55,7 @@ sudo gluster volume delete influxdb_volume
 sudo gluster volume delete postgre_volume
 ```
 
-Also, make sure that the glusterfs volume replicas are set to `3` when running on PicoCluster10, and `2` when running on PicoCluster5.
+Also, make sure that the glusterfs volume replicas are set to `3` when running on PicoCluster10, and `2` when running on PicoCluster5. Edit all instances of `replicas` in file `roles/glusterfs/master/tasks/main.yml`
 
 # Usage
 
