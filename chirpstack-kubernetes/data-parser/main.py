@@ -12,6 +12,7 @@ from parser.people_counter import people_counter
 from parser.wind import wind
 from parser.traffic_counter import traffic_counter
 
+central_pc = "172.20.192.19"
 
 devEUI_file = 'conf/devEUI.json'
 with open(devEUI_file) as f:
@@ -101,6 +102,12 @@ def influxdb_update(influxdb_server, influxdb_dict):
     dbname = 'sensor_data'
     
     client = InfluxDBClient(host, port, user, password, dbname)
+    
+    dbs = client.get_list_database()
+    
+    if dbname not in dbs:
+        client.create_database(dbname)
+        
     points = []
     points.append(influxdb_dict)
     print("Write points: {0}".format(points))
@@ -125,7 +132,13 @@ def on_message(client, userdata, msg):
         print(topic, mqtt_message_string)
         client.publish(topic, mqtt_message_string)
         
+        print("Update influxdb in fog")
         influxdb_update(mqtt_server, influxdb_dict)
+        
+        print("Update influxdb in cloud")
+        influxdb_update(central_pc, influxdb_dict)
+        
+        
         
 
 if __name__ == '__main__':
@@ -135,10 +148,15 @@ if __name__ == '__main__':
     # Required positional argument
     parser.add_argument('mqtt_server', type=str,
                         help='the ip address of mqtt server')
+
+    # parser.add_argument('central_pc', type=str, default="192.168.9.71",
+    #                     help='the ip address of central pc')
     
     args = parser.parse_args()
-    global mqtt_server
+    global mqtt_server #, central_pc
     mqtt_server = args.mqtt_server
+    # central_pc = args.central_pc
+    
 
     client = mqtt.Client()
     client.connect(mqtt_server)
