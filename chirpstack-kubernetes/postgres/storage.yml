@@ -15,8 +15,7 @@ spec:
     endpoints: postgre-gluster
     path: /postgre_volume
     readOnly: false      
-  persistentVolumeReclaimPolicy: Retain
-    
+  persistentVolumeReclaimPolicy: Retain    
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
@@ -32,7 +31,6 @@ spec:
   resources:
     requests:
       storage: 5Gi
-
 ---
 kind: PersistentVolume
 apiVersion: v1
@@ -51,6 +49,7 @@ spec:
     endpoints: postgre-gluster
     path: /postgre_volume
     readOnly: false
+  persistentVolumeReclaimPolicy: Retain
 ---
 kind: PersistentVolumeClaim
 apiVersion: v1
