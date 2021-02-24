@@ -14,25 +14,21 @@ services:
       - INFLUXDB_USER_PASSWORD=fogguru
     restart: unless-stopped
 
-  chronograf:
-    image: chronograf:1.8
-    volumes:
-      - $PWD/chronograf/data/:/var/lib/chronograf/
-    ports:
-      # The WebUI for Chronograf is served on port 8888
-      - "8888:8888"
-    depends_on:
-      - influxdb
+  # chronograf:
+  #   image: chronograf:1.8
+  #   volumes:
+  #     - $PWD/chronograf/data/:/var/lib/chronograf/
+  #   ports:
+  #     # The WebUI for Chronograf is served on port 8888
+  #     - "8888:8888"
+  #   depends_on:
+  #     - influxdb
 
   grafana:
     image: grafana/grafana
     restart: always
     ports:
       - 3000:3000
-    networks:
-      tick_network:
-         aliases:
-           - grafana
     volumes:
       - $PWD/grafana:/var/lib/grafana
 
