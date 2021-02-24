@@ -18,10 +18,6 @@ services:
     image: chronograf:1.8
     volumes:
       - $PWD/chronograf/data/:/var/lib/chronograf/
-    networks:
-      tick_network:
-         aliases:
-            - chronograf
     ports:
       # The WebUI for Chronograf is served on port 8888
       - "8888:8888"
