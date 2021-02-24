@@ -9,7 +9,7 @@ def bin16dec(bin_):
 # def decode_extended_v4(payload_hex):
 def people_counter(payload_hex):
     bytes_ = bytearray.fromhex(payload_hex)
-    decoded_payload = {'LTR': '', 'RTL': '', 'LTR_SUM': '', 'RTL_SUM': '', 'SBX_BATT': '', 'SBX_PV': '', 'DIFF': '',
+    decoded_payload = {'LeftToRight': '', 'RightToLeft': '', 'LeftToRight_SUM': '', 'RightToLeft_SUM': '', 'SBX_BATT': '', 'SBX_PV': '', 'DIFF': '',
                        'TEMP': ''}
 
     if len(bytes_) != 17:
