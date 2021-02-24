@@ -24,6 +24,18 @@ services:
     depends_on:
       - influxdb
 
+  grafana:
+    image: grafana/grafana
+    restart: always
+    ports:
+      - 3000:3000
+    networks:
+      tick_network:
+         aliases:
+           - grafana
+    volumes:
+      - $PWD/grafana:/var/lib/grafana
+
   prometheus:
     image: prom/prometheus:latest
     user: root
@@ -50,16 +62,3 @@ services:
   #     - /var/lib/docker/:/var/lib/docker:ro
   #   ports:
   #     - '8080:8080'
-
-  # mosquitto:
-  #   image: eclipse-mosquitto
-  #   hostname: mosquitto
-  #   container_name: mosquitto
-  #   expose:
-  #     - "1883"
-  #     - "9001"
-  #   ports:
-  #     - "1883:1883"
-  #     - "9001:9001"
-    #volumes:
-    #  - ./mosquitto/mosquitto.conf:/mosquitto/config/mosquitto.conf
