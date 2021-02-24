@@ -8,7 +8,7 @@ spec:
   type: NodePort
   ports:
     - port: $port
-      targetPort: $port
+      targetPort: 1880
   selector:
     app: nodered
   externalIPs:

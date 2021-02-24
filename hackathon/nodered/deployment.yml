@@ -18,4 +18,4 @@ spec:
       - name: nodered
         image: nodered/node-red:1.0.5-10-arm32v7
         ports:
-          - containerPort: $port
+          - containerPort: 1880
