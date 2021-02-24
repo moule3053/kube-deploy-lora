@@ -1,5 +1,5 @@
-export varnamespace=team1-namespace
-export varsaname=team1-sa
+export varnamespace=[team1-namespace]
+export varsaname=[team1-sa]
 
 #get service account properties
 name=$(kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o jsonpath='{.secrets[0].name}')
