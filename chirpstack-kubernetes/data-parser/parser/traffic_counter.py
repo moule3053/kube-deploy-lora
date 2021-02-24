@@ -8,10 +8,10 @@ def bin16dec(bin_):
 #' Decoder Version 2.2 ' : app_payload_v2_decoder
 def traffic_counter(payload_hex):
     bytes_ = bytearray.fromhex(payload_hex)
-    decoded_payload = {'SBX_BATT': '', 'SBX_PV': '', 'TEMP': '', 'L0_CNT': '', 'L0_AVG': '', 'R0_CNT': '', 'R0_AVG': '',
-                       'L1_CNT': '', 'L1_AVG': '', 'R1_CNT': '',
-                       'R1_AVG': '', 'L2_CNT': '', 'L2_AVG': '', 'R2_CNT': '', 'R2_AVG': '', 'L3_CNT': '', 'L3_AVG': '',
-                       'R3_CNT': '', 'R3_AVG': ''}
+    decoded_payload = {'SBX_BATT': '', 'SBX_PV': '', 'TEMP': '', 'Left0_CNT': '', 'Left0_AVG': '', 'Right0_CNT': '', 'Right0_AVG': '',
+                       'Left1_CNT': '', 'Left1_AVG': '', 'Right1_CNT': '',
+                       'Right1_AVG': '', 'Light2_CNT': '', 'Left2_AVG': '', 'Right2_CNT': '', 'Right2_AVG': '', 'Left3_CNT': '', 'Left3_AVG': '',
+                       'Right3_CNT': '', 'Right3_AVG': ''}
 
     if len(bytes_) != 33:
         print('ERROR: Wrong payload length')
