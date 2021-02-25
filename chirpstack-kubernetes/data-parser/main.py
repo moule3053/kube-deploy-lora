@@ -12,7 +12,7 @@ from parser.people_counter import people_counter
 from parser.wind import wind
 from parser.traffic_counter import traffic_counter
 
-central_pc = "172.20.192.19"
+central_pc = "192.168.9.71"
 
 devEUI_file = 'conf/devEUI.json'
 with open(devEUI_file) as f:
