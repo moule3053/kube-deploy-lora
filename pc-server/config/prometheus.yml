@@ -8,7 +8,7 @@ scrape_configs:
       - targets: ['prometheus:9090']
     tls_config:
       insecure_skip_verify: true
-  - job_name: 'federate'
+  - job_name: 'node'
     scrape_interval: 50s
     scrape_timeout:  5s
     honor_labels: true
@@ -20,12 +20,12 @@ scrape_configs:
         - '{job="kubernetes-nodes"}'
         - '{job="kubernetes-cadvisor"}'
         # - '{name=~".+"}'
-        # - '{job="kubernetes-service-endpoints"}'
+        - '{job="kubernetes-service-endpoints"}'
         # - '{job="kubernetes-pods"}'
         # - '{job="kubernetes-apiservers"}'
         # - '{pod_name=".+"}'
-        - '{namespace="global"}'
-        - '{job="node-exporter"}'
+        # - '{namespace="kube-system"}'
+        # - '{job="node-exporter"}'
     static_configs:
       - targets:
         - '192.168.9.10:9090'
