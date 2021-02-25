@@ -69,6 +69,9 @@ def data_parser(payload_dict):
     elif sensor_type == 'smart_water_lon':
         protocol_file = './parser/smart_water_lon.csv'
         mqtt_dict = smart_water(data_hex, protocol_file)  
+    elif sensor_type == 'outdoor_env':
+        protocol_file = './parser/outdoor_env.csv'
+        mqtt_dict = smart_water(data_hex, protocol_file)          
     elif sensor_type == 'people_counter':
         mqtt_dict = people_counter(data_hex)
     elif sensor_type == 'wind':

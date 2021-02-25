@@ -25,7 +25,7 @@ def get_sensor_data(sensor_id, df):
     sensor_name = df['Sensor'][df['SENSORIDBinary'] == sensor_id].values[0]
     data_size = df['BinarySizeperField'][df['SENSORIDBinary'] == sensor_id].values[0]
     data_type = df['BinaryTypeofvariable'][df['SENSORIDBinary'] == sensor_id].values[0]
-    data_precision = df['DefaultDecimalPrecision'][df['SENSORIDBinary'] == sensor_id].values[0]
+    data_precision = int(df['DefaultDecimalPrecision'][df['SENSORIDBinary'] == sensor_id].values[0])
     data_unit = str(df['Unit'][df['SENSORIDBinary'] == sensor_id].values[0])
 
     return sensor_name, data_size, data_type, data_precision, data_unit
