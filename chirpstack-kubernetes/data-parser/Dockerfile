@@ -1,4 +1,4 @@
-FROM arm32v7/python:3
+FROM arm32v7/python:3.10.0a5-buster
 
 WORKDIR /usr/src/app
 

@@ -8,17 +8,13 @@ def bin16dec(bin_):
 #' Decoder Version 2.2 ' : app_payload_v2_decoder
 def traffic_counter(payload_hex):
     bytes_ = bytearray.fromhex(payload_hex)
-    decoded_payload = {'SBX_BATT': '', 'SBX_PV': '', 'TEMP': '', 'Left0_CNT': '', 'Left0_AVG': '', 'Right0_CNT': '', 'Right0_AVG': '',
-                       'Left1_CNT': '', 'Left1_AVG': '', 'Right1_CNT': '',
-                       'Right1_AVG': '', 'Light2_CNT': '', 'Left2_AVG': '', 'Right2_CNT': '', 'Right2_AVG': '', 'Left3_CNT': '', 'Left3_AVG': '',
-                       'Right3_CNT': '', 'Right3_AVG': ''}
+    decoded_payload = {}
 
     if len(bytes_) != 33:
         print('ERROR: Wrong payload length')
-        return None
 
     # Check for Parametric TCR v2 payload
-    if bytes_[0] == 0xbe and bytes_[1] == 0x02 and bytes_[2] == 0x02:
+    elif bytes_[0] == 0xbe and bytes_[1] == 0x02 and bytes_[2] == 0x02:
 
         decoded_payload['SBX_BATT'] = (bytes_[3] << 8 | bytes_[4])
         decoded_payload['SBX_PV'] = (bytes_[5] << 8 | bytes_[6])
@@ -26,28 +22,28 @@ def traffic_counter(payload_hex):
         decoded_payload['TEMP'] = floor(bin16dec(temp) / 10)
 
         # Speed class 1
-        decoded_payload['L0_CNT'] = (bytes_[9] << 8 | bytes_[10])
-        decoded_payload['L0_AVG'] = bytes_[11]
-        decoded_payload['R0_CNT'] = (bytes_[12] << 8 | bytes_[13])
-        decoded_payload['R0_AVG'] = bytes_[14]
+        decoded_payload['Left0_CNT'] = (bytes_[9] << 8 | bytes_[10])
+        decoded_payload['Left0_AVG'] = bytes_[11]
+        decoded_payload['Right0_CNT'] = (bytes_[12] << 8 | bytes_[13])
+        decoded_payload['Right0_AVG'] = bytes_[14]
 
         # Speed class 2
-        decoded_payload['L1_CNT'] = (bytes_[15] << 8 | bytes_[16])
-        decoded_payload['L1_AVG'] = bytes_[17]
-        decoded_payload['R1_CNT'] = (bytes_[18] << 8 | bytes_[19])
-        decoded_payload['R1_AVG'] = bytes_[20]
+        decoded_payload['Left1_CNT'] = (bytes_[15] << 8 | bytes_[16])
+        decoded_payload['Left1_AVG'] = bytes_[17]
+        decoded_payload['Right1_CNT'] = (bytes_[18] << 8 | bytes_[19])
+        decoded_payload['Right1_AVG'] = bytes_[20]
 
         # Speed class 3
-        decoded_payload['L2_CNT'] = (bytes_[21] << 8 | bytes_[22])
-        decoded_payload['L2_AVG'] = bytes_[23]
-        decoded_payload['R2_CNT'] = (bytes_[24] << 8 | bytes_[25])
-        decoded_payload['R2_AVG'] = bytes_[26]
+        decoded_payload['Light2_CNT'] = (bytes_[21] << 8 | bytes_[22])
+        decoded_payload['Left2_AVG'] = bytes_[23]
+        decoded_payload['Right2_CNT'] = (bytes_[24] << 8 | bytes_[25])
+        decoded_payload['Right2_AVG'] = bytes_[26]
 
         # Speed class 4
-        decoded_payload['L3_CNT'] = (bytes_[27] << 8 | bytes_[28])
-        decoded_payload['L3_AVG'] = bytes_[29]
-        decoded_payload['R3_CNT'] = (bytes_[30] << 8 | bytes_[31])
-        decoded_payload['R3_AVG'] = bytes_[32]
+        decoded_payload['Left3_CNT'] = (bytes_[27] << 8 | bytes_[28])
+        decoded_payload['Left3_AVG'] = bytes_[29]
+        decoded_payload['Right3_CNT'] = (bytes_[30] << 8 | bytes_[31])
+        decoded_payload['Right3_AVG'] = bytes_[32]
 
     else:
         print('ERROR: TCR application payload V2 should start with be0202..')
