@@ -36,31 +36,31 @@ data:
           - targets:
             - '192.168.9.10:9090'
             labels:
-              clusterID: cluster1
+              clusterID: Cluster1
           - targets:
             - '192.168.9.20:9090'
             labels:
-              clusterID: cluster2
+              clusterID: Cluster2
           - targets:
             - '192.168.9.30:9090'
             labels:
-              clusterID: cluster3
+              clusterID: Cluster3
           - targets:
             - '192.168.9.40:9090'
             labels:
-              clusterID: cluster4
+              clusterID: Cluster4
           - targets:
             - '192.168.9.50:9090'
             labels:
-              clusterID: cluster5
+              clusterID: Cluster5
           - targets:
             - '192.168.9.60:9090'
             labels:
-              clusterID: cluster6
+              clusterID: Cluster6
           - targets:
             - '192.168.9.65:9090'
             labels:
-              clusterID: cluster7
+              clusterID: Cluster7
 
       # - job_name: 'node-exporter'
       #   static_configs:

@@ -57,9 +57,9 @@ spec:
   ports:
   - port: 9090
     targetPort: 9090
-    #nodePort: 30003
+    nodePort: 30003
   selector:
     app: prometheus
   externalIPs:
   - 192.168.9.71
-  - 172.20.192.9
+  - 172.20.192.19

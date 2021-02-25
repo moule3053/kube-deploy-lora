@@ -61,7 +61,7 @@ spec:
               name: influx
           env:
             - name: INFLUXDB_DB
-              value: awac
+              value: sensor_data
             - name: INFLUXDB_USER
               value: fogguru
             - name: INFLUXDB_USER_PASSWORD
@@ -91,4 +91,4 @@ spec:
     app: influx
   externalIPs:
   - 192.168.9.71
-  - 172.20.192.9                  
+  - 172.20.192.19                  
