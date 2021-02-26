@@ -34,7 +34,7 @@ def traffic_counter(payload_hex):
         decoded_payload['Right1_AVG'] = bytes_[20]
 
         # Speed class 3
-        decoded_payload['Light2_CNT'] = (bytes_[21] << 8 | bytes_[22])
+        decoded_payload['Left2_CNT'] = (bytes_[21] << 8 | bytes_[22])
         decoded_payload['Left2_AVG'] = bytes_[23]
         decoded_payload['Right2_CNT'] = (bytes_[24] << 8 | bytes_[25])
         decoded_payload['Right2_AVG'] = bytes_[26]

@@ -20,3 +20,7 @@ spec:
         env:
         - name: MQTT_SERVER
           value: mosquitto
+        - name: LOCAL_INFLUXDB
+          value: influx
+        - name: CENTRAL_INFLUXDB
+          value: "192.168.9.71"

@@ -68,12 +68,15 @@ def smart_water(data_hex, protocol_file):
         # print(sensor_name, sensor_value)
 
         # print(type(data_unit), data_unit, len(data_unit))
-        if data_unit == 'nan':
-            value = str(sensor_value)
-        else:
-            value = str(sensor_value) + " " + data_unit
+        # if data_unit == 'nan':
+        #     value = str(sensor_value)
+        # else:
+        #     value = str(sensor_value) + " " + data_unit
 
-        payload_dict[sensor_name] = value
+        payload_dict[sensor_name] = str(sensor_value)
+        
+        unit_name = sensor_name + '_unit'
+        payload_dict[unit_name] = data_unit
 
     return payload_dict
 

@@ -12,7 +12,6 @@ from parser.people_counter import people_counter
 from parser.wind import wind
 from parser.traffic_counter import traffic_counter
 
-central_pc = "192.168.9.71"
 
 devEUI_file = 'conf/devEUI.json'
 with open(devEUI_file) as f:
@@ -135,11 +134,14 @@ def on_message(client, userdata, msg):
         print(topic, mqtt_message_string)
         client.publish(topic, mqtt_message_string)
         
-        print("Update influxdb in fog")
-        influxdb_update(mqtt_server, influxdb_dict)
         
-        print("Update influxdb in cloud")
-        influxdb_update(central_pc, influxdb_dict)
+        if local_influxdb != 'disable':
+            print("Update influxdb in fog")
+            influxdb_update(local_influxdb, influxdb_dict)
+        
+        if central_influxdb != 'disable':
+            print("Update influxdb in cloud")
+            influxdb_update(central_influxdb, influxdb_dict)
         
         
         
@@ -151,14 +153,20 @@ if __name__ == '__main__':
     # Required positional argument
     parser.add_argument('mqtt_server', type=str,
                         help='the ip address of mqtt server')
+    parser.add_argument('local_influxdb', type=str,
+                        help = 'the ip address of influxdb in a fog cluster')
 
-    # parser.add_argument('central_pc', type=str, default="192.168.9.71",
-    #                     help='the ip address of central pc')
+    parser.add_argument('central_influxdb', type=str, 
+                        help='the ip address of central influxdb')
     
     args = parser.parse_args()
-    global mqtt_server #, central_pc
+    
+    global mqtt_server, local_influxdb, central_influxdb
     mqtt_server = args.mqtt_server
-    # central_pc = args.central_pc
+    local_influxdb = args.local_influxdb
+    central_influxdb = args.central_influxdb
+    
+    print(mqtt_server, local_influxdb, central_influxdb)
     
 
     client = mqtt.Client()
