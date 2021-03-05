@@ -1,5 +1,9 @@
 Sensor,SensorReference,SensorTAG,SENSORIDBinary,SENSORIDASCII,NumberOfFields,BinaryTypeofvariable,BinarySizeperField,DefaultDecimalPrecision,Unit
 Batterylevel,N/A,SENSOR_BAT,52,BAT,1,uint8_t,1,0,%
+Averagewinddirection,N/A,AGRX_GMX_AWD,211,AWD,1,uint16_t,2,0,º
+Averagewindspeed,N/A,AGRX_GMX_AWS,213,AWS,1,float,4,2,m/s
+Precipitationtotal,N/A,AGRX_GMX_PT,217,PT,1,float,4,3,mm
+Precipitationintensity,N/A,AGRX_GMX_PI,218,PI,1,float,4,3,mm
 TemperatureCelsius,9370-P,AGRX_TC_A,0,TC_A,1,float,4,2,ºC
 TemperatureFahrenheit,9370-P,AGRX_TF_A,1,TF_A,1,float,4,2,ºF
 Humidity,9370-P,AGRX_HUM_A,2,HUM_A,1,float,4,1,%RH

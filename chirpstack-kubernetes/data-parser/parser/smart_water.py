@@ -31,6 +31,16 @@ def get_sensor_data(sensor_id, df):
     return sensor_name, data_size, data_type, data_precision, data_unit
 
 
+def to_little(val):
+  little_hex = bytearray.fromhex(val)
+  little_hex.reverse()
+  # print("Byte array format:", little_hex)
+
+  str_little = ''.join(format(x, '02x') for x in little_hex)
+
+  return str_little
+
+
 def smart_water(data_hex, protocol_file):
 
     df = pd.read_csv(protocol_file)
@@ -62,6 +72,8 @@ def smart_water(data_hex, protocol_file):
         # print(data_type)
         if data_type == 'uint8_t':
             sensor_value = int(data_hex[index_start:index_end], 16)
+        elif data_type == 'uint16_t':
+            sensor_value = int(to_little(data_hex[index_start:index_end]), 16)
         elif data_type == 'float':
             sensor_value = round(struct.unpack('<f', bytes.fromhex(data_hex[index_start:index_end]))[0], data_precision)
             # print(type(sensor_value))
