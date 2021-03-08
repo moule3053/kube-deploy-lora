@@ -42,6 +42,9 @@ spec:
           - name: password-file
             mountPath: /mosquitto/config/passwd
             subPath: passwd
+          - name: acl-file
+            mountPath: /mosquitto/config/acl
+            subPath: acl
       volumes:
         - name: mosquitto
           persistentVolumeClaim:
@@ -61,3 +64,6 @@ spec:
         - name: password-file
           configMap:
             name: password-file
+        - name: acl-file
+          configMap:
+            name: acl-file
