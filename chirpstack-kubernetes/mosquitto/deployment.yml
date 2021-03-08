@@ -41,7 +41,7 @@ spec:
             subPath: mosquitto.conf
           - name: password-file
             mountPath: /mosquitto/config/passwd
-            subPath: password_file.txt
+            subPath: passwd
       volumes:
         - name: mosquitto
           persistentVolumeClaim:
