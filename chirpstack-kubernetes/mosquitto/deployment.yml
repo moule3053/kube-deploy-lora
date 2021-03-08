@@ -58,3 +58,6 @@ spec:
         - name: mosquitto-config
           configMap:
             name: mosquitto-config
+        - name: password-file
+          configMap:
+            name: password-file

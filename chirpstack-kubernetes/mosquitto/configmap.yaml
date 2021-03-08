@@ -17,6 +17,12 @@ data:
 
     # if allow_anonymous is false, we should use password file to authenticate
     password_file /mosquitto/config/password_file.txt
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: password-file
+data:
   password_file.txt: |-
     fogguru:FogGuru2020
     user:user
