@@ -4,8 +4,8 @@ metadata:
   namespace: $varnamespace
   name: team-admin
 rules:
-- apiGroups: [""]
-  resources: ["pods","pods/log", pods/portforward, 
+- apiGroups: ["","apps"]
+  resources: ["pods","pods/log", "pods/portforward", 
               "deployments", "deployments/logs",
               "services", "services/logs"
               ]
