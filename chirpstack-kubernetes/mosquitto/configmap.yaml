@@ -41,5 +41,9 @@ data:
 
     # username "participant" can read only topic "test"
     user participant
-    topic read test
+    topic read test1
+    topic read test2
+    topic read test3
+    topic read test4
+    topic read test5
 
