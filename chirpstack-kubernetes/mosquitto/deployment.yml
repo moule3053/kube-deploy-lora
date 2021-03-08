@@ -38,7 +38,10 @@ spec:
             readOnly: false
           - name: mosquitto-config
             mountPath: /mosquitto/config/mosquitto.conf
-            subPath: mosquitto.conf             
+            subPath: mosquitto.conf
+          - name: password-file
+            mountPath: /mosquitto/config/password_file.txt
+            subPath: password_file.txt
       volumes:
         - name: mosquitto
           persistentVolumeClaim:

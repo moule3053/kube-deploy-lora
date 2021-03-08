@@ -14,3 +14,9 @@ data:
     # Allow anonymous users to connect?
     # If not, the password file should be created
     allow_anonymous true
+
+    # if allow_anonymous is false, we should use password file to authenticate
+    password_file /mosquitto/config/password_file.txt
+  password_file.txt: |-
+    fogguru:FogGuru2020
+    user:user
