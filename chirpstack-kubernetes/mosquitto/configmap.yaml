@@ -18,7 +18,8 @@ data:
     # if allow_anonymous is false, we should use password file to authenticate
     password_file /mosquitto/config/passwd
 
-    acl_file /mosquitto/config/aclfile
+    acl_file /mosquitto/config/acl
+
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -26,24 +27,46 @@ metadata:
   name: password-file
 data:
   passwd: |-
-    fogguru:$7$101$XtFK5HUbuET0/lPt$SAg0jpiMCZ4XUWmno2ym5j8bXLHxIkZzFv8K5MSrzz7JiSMq7C0RCWbYZYY5SqbMqi3BBv0Yw4XVQEMG83kdLQ==
-    participant:$7$101$qM5LvN15r/peqfsE$1KWGqK7HEp644mI4zd6Z69lKTEnj4qqGad66EIe/U6L0HqPgFQIfenwFiBfAgcJQGKw3lLtdXRCysbAT/lg+Sg==
+    fogguru:$7$101$8NqCJ2mgoToLAWtA$qPFwmF5lqZzBxC+Z97m2qnWwSUW8sEFinrSW4NnmE4Bnbpd90ZH946ei7OdRzF4sTv1c3xnCNCGHhDWqI/4v4Q==
+    user-1:$7$101$IFNp3n5qmOeBvbpx$eVw57tb//4zbRlB0kreDmS7hWizCFaEckEaL67nvGGEiPg7Aacq0SzMXV0u6YysCeLkPYg5iI9iHnNpUabse8Q==
+    user-2:$7$101$scCH1HEqYFah/UoC$2yauYPPGbSEasEYufCMkLKrFHbxo8bzsibyKEkHXFQrcEyfIMxiCFdtlAEEgLbLZA0gBw2aEuPnj7TdSKz7zxA==
+    user-3:$7$101$JgRFxWXlO4OIcsql$W7RJ8tDixTMT1WSzrHfSOSS5FBpQeWawk70U9WzftNh60pxfXh/tWM40D5KOQ0lh3Gr2pkeSS2rtHHF5qJKTww==
+    user-4:$7$101$vev0cHuTAmFE0KiS$sVa9KN6kEDWQCxF9D/6k3ZzOhkxIuD2knI6/In6f1DiXhRk6a619tByuGUB8X9A+mV9xECCr9cuBj02e7/2Ipg==
+    user-5:$7$101$kUrLzrqLX+X4/1SN$kZ0/vvtR0/Nk8u2ig0FgrCgjKRnzaCW2zaOaJxSi/2mupdDm341BRmYm1qG/yHRXYxyj6oZDnTAmQQ1LobVcfg==
+    user-6:$7$101$8MdwD6+leHR/ehDL$5XcW+Ishr+WeIksoZaN313HRZI2Umufgygpgv6mvG4aYX7sgkHmQkKsjP1bvZqmJYUKs8LFLrwwj2FGuCRQHtA==
+    user-7:$7$101$xc4mCUHcRuhSZjTH$QL14eMBmEwzrq3FGv9kYTtuaUS6EHUlSfc+SusVielvioRZ11paIYX6U3LX5ySu8GTy0vLwfdfYKZ6HGQiJmeA==
+    user-8:$7$101$ba5H4R2uud8D7Smh$b0fWT0lXLWN4vV3gLpqTiTAegOUekWs3NJOE+2vJQAetT8MqCN3XQz7dM1ROB2qlnIDgM53thBltD1e9KlBYdg==
+    user-9:$7$101$zzUJ8toii5oIQygK$3/6uClp3Ed66gQvxUaUudAVF5M0+veMsLVYf3YYU18suuAlif7DUrYqshPODWxgiCbchfh+Bouci+rRFJsOO2A==
+    user-10:$7$101$7aoaHALZpymd9odJ$mgM/ReiQlIDyb/awtpbI/IU94gZlSIePkNsfZew8NE4S4l4/aG367oNPXtZ1yU57fhi68p/tNW6POx662tG1YA==
+    user-11:$7$101$zQKq0bGT7uPsOoPO$Aj2KvowG1b/UU1wKjFzV0bDstP9o4YUU6CLAxh0H/rSNh3eW9RnpcpdnfOP8IavWTGSiwJD3CGLNmeZUVgxKoQ==
 ---
 apiVersion: v1
 kind: ConfigMap
 metadata:
   name: acl-file
 data:
-  aclfile: |-
-    # username "fogguru" have access to everything 
+  acl: |-
+    #username "fogguru" have access to everything 
     user fogguru
     topic readwrite #
 
-    # username "participant" can read only topic "test"
-    user participant
+    #username "user" can read only topic "test"
+    user user-1
     topic read test1
     topic read test2
     topic read test3
-    topic read test4
-    topic read test5
 
+    user user-2
+    topic read test1
+    topic read test2
+    topic read test3
+    
+    user user-3
+    topic read test1
+    topic read test2
+    topic read test3
+
+    user user-4
+    topic read test1
+    topic read test2
+    topic read test3

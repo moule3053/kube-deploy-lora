@@ -43,8 +43,8 @@ spec:
             mountPath: /mosquitto/config/passwd
             subPath: passwd
           - name: acl-file
-            mountPath: /mosquitto/config/aclfile
-            subPath: aclfile
+            mountPath: /mosquitto/config/acl
+            subPath: acl
       volumes:
         - name: mosquitto
           persistentVolumeClaim:
