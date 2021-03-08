@@ -16,9 +16,9 @@ data:
     allow_anonymous false
 
     # if allow_anonymous is false, we should use password file to authenticate
-    #password_file /mosquitto/config/password_file.txt
     password_file /mosquitto/config/passwd
-    acl_file  /mosquitto/config/aclfile
+
+    acl_file /mosquitto/config/aclfile
 ---
 apiVersion: v1
 kind: ConfigMap
