@@ -25,4 +25,7 @@ metadata:
 data:
   password_file.txt: |-
     fogguru:FogGuru2020
+
+    test:test
+    
     user:user
