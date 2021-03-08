@@ -18,6 +18,8 @@ data:
     # if allow_anonymous is false, we should use password file to authenticate
     #password_file /mosquitto/config/password_file.txt
     password_file /mosquitto/config/passwd
+    require_certificate false
+    use_identity_as_username false
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -28,3 +30,4 @@ data:
     fogguru:FogGuru2020
     test:test
     user:user
+    ==
