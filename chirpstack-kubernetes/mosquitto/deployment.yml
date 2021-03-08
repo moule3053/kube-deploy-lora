@@ -40,7 +40,7 @@ spec:
             mountPath: /mosquitto/config/mosquitto.conf
             subPath: mosquitto.conf
           - name: password-file
-            mountPath: /mosquitto/config/password_file.txt
+            mountPath: /mosquitto/config/passwd
             subPath: password_file.txt
       volumes:
         - name: mosquitto
