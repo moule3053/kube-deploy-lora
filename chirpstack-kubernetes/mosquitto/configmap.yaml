@@ -30,3 +30,21 @@ data:
     fogguru:$7$101$A/Rl1uTn6B2l7OvR$bVCOPULFs0HRPq94MUwaH3b9f26/l0/NW4hk8XB3ejH69W9IWbJfujeG15nX6qAULcKCOTv/3g6nYNeDXkHXfw==
     test:$7$101$6qnngeJcsuPpemy3$BfxVACAz30RBayWJK64KWAZOgXAp3d0PZkUO6vS54z00YG53GM3UkLpVk1T55M0H3T/yx2uNeUejnyvewzrsew==
     user:$7$101$zEWCyJI4I1kdFqiJ$hl9cRWh70npvD528qTDdRkW0f2ZRdAVanAiZoYnduAVskA6JW1LwIo2/FF8tSWKi0bgDikdGaR8nLMQuaSOEJg==
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: acl-file
+data:
+  aclfile: |-
+    # "no username" can read all topics
+    topic read $SYS/#
+
+    # username "fogguru" have access to everything 
+    user fogguru
+    topic readwrite #
+
+    # username "user" can read only topic "test"
+    user user
+    topic read test
+
