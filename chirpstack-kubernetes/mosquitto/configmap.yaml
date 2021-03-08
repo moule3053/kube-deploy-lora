@@ -26,9 +26,8 @@ metadata:
   name: password-file
 data:
   passwd: |-
-    fogguru:$7$101$A/Rl1uTn6B2l7OvR$bVCOPULFs0HRPq94MUwaH3b9f26/l0/NW4hk8XB3ejH69W9IWbJfujeG15nX6qAULcKCOTv/3g6nYNeDXkHXfw==
-    test:$7$101$6qnngeJcsuPpemy3$BfxVACAz30RBayWJK64KWAZOgXAp3d0PZkUO6vS54z00YG53GM3UkLpVk1T55M0H3T/yx2uNeUejnyvewzrsew==
-    user:$7$101$zEWCyJI4I1kdFqiJ$hl9cRWh70npvD528qTDdRkW0f2ZRdAVanAiZoYnduAVskA6JW1LwIo2/FF8tSWKi0bgDikdGaR8nLMQuaSOEJg==
+    fogguru:$7$101$XtFK5HUbuET0/lPt$SAg0jpiMCZ4XUWmno2ym5j8bXLHxIkZzFv8K5MSrzz7JiSMq7C0RCWbYZYY5SqbMqi3BBv0Yw4XVQEMG83kdLQ==
+    participant:$7$101$qM5LvN15r/peqfsE$1KWGqK7HEp644mI4zd6Z69lKTEnj4qqGad66EIe/U6L0HqPgFQIfenwFiBfAgcJQGKw3lLtdXRCysbAT/lg+Sg==
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -40,7 +39,7 @@ data:
     user fogguru
     topic readwrite #
 
-    # username "user" can read only topic "test"
-    user user
+    # username "participant" can read only topic "test"
+    user participant
     topic read test
 
