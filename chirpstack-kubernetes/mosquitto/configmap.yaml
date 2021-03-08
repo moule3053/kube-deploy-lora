@@ -18,8 +18,7 @@ data:
     # if allow_anonymous is false, we should use password file to authenticate
     #password_file /mosquitto/config/password_file.txt
     password_file /mosquitto/config/passwd
-    require_certificate false
-    use_identity_as_username false
+    acl_file  /mosquitto/config/aclfile
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -37,9 +36,6 @@ metadata:
   name: acl-file
 data:
   aclfile: |-
-    # "no username" can read all topics
-    topic read $SYS/#
-
     # username "fogguru" have access to everything 
     user fogguru
     topic readwrite #
