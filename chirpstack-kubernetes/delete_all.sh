@@ -4,7 +4,6 @@ kubectl delete -f ./mosquitto/
 kubectl delete -f ./influxdb/
 kubectl delete -f ./postgres/
 kubectl delete -k redis/.
-# kubectl delete -f ./chirpstack-gateway-bridge/
 kubectl delete -f ./chirpstack-network-server/
 kubectl delete -f ./chirpstack-application-server/
 kubectl delete -f ./monitoring/
