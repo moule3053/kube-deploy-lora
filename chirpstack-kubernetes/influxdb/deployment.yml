@@ -22,9 +22,9 @@ spec:
               name: influx
           env:
             - name: INFLUXDB_ADMIN_USER
-              value: fogguru
+              value: admin
             - name: INFLUXDB_ADMIN_PASSWORD
-              value: FogGuru2020
+              value: admin
           #   - name: INFLUXDB_DB
           #     value: chirpstack_as
           #   - name: INFLUXDB_USER
