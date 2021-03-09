@@ -51,13 +51,13 @@ def data_parser(payload_dict):
     if sensor_location != None: 
         topic = sensor_type + "/" + sensor_location
     else:
-        print("The sensor is not included yet")
+        print("WARNING: The sensor is not included yet")
         return None, None, None
     
     mqtt_message['SensorID'] = devEUI
     
     if 'data' not in payload_dict.keys():
-        print('No data in sensor data')
+        print('WARNING: No data in sensor data')
         return None, None, None
 
     data = payload_dict['data']
@@ -102,9 +102,10 @@ def data_parser(payload_dict):
 def influxdb_update(influxdb_server, influxdb_dict):
     host = influxdb_server
     port = 8086
-    user = 'fogguru'
+    user = 'foggugu'
     password = 'fogguru'
     dbname = 'sensor_data'
+
     
     client = InfluxDBClient(host, port, user, password, dbname)
     
@@ -115,36 +116,41 @@ def influxdb_update(influxdb_server, influxdb_dict):
         
     points = []
     points.append(influxdb_dict)
-    print("Write points: {0}".format(points))
+    print("INFO: Write points: {0}".format(points))
     client.write_points(points)
     
 
 # This is the Subscriber
 def on_connect(client, userdata, flags, rc):
-    print("Connected with result code " + str(rc))
+    print("INFO: Connected with result code " + str(rc))
     client.subscribe("application/#")
 
 def on_message(client, userdata, msg):
     payload = msg.payload.decode() # string
     payload_dict = json.loads(payload) # dict
-    print(payload_dict)
+    print("INFO: Raw data ", payload_dict)
 
     topic, mqtt_message, influxdb_dict = data_parser(payload_dict)
+    
+    
 
-    if topic is not None and mqtt_message is not None: 
+    if topic is not None and mqtt_message is not None and bool(mqtt_message['SensorData']): 
         mqtt_message_string = json.dumps(mqtt_message, ensure_ascii=False)
     
-        print(topic, mqtt_message_string)
+        print("INFO: Parsed data", topic, mqtt_message_string)
         client.publish(topic, mqtt_message_string)
         
         
-        if local_influxdb != 'disable':
-            print("Update influxdb in fog")
+        if local_influxdb != 'disable' :
+            print("INFO: Update influxdb in fog")
             influxdb_update(local_influxdb, influxdb_dict)
         
         if central_influxdb != 'disable':
-            print("Update influxdb in cloud")
+            print("INFO: Update influxdb in cloud")
             influxdb_update(central_influxdb, influxdb_dict)
+
+    else:
+        print("WARNING: Sensor data is wrong")
         
         
         
@@ -169,10 +175,11 @@ if __name__ == '__main__':
     local_influxdb = args.local_influxdb
     central_influxdb = args.central_influxdb
     
-    print(mqtt_server, local_influxdb, central_influxdb)
+    print("INFO: Settings ", mqtt_server, local_influxdb, central_influxdb)
     
 
     client = mqtt.Client()
+    # client.username_pw_set(username="fogguru",password="FogGuru2020")
     client.connect(mqtt_server)
     
     client.on_connect = on_connect

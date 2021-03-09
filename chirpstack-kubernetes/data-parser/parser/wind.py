@@ -6,7 +6,7 @@ def wind(data_hex):
     payload_dict = {}
     
     if len(data_hex) < 46:
-        print("Wrong data length")
+        print("WARNING: Wrong data length")
         return payload_dict
     
     value = int(data_hex[10:14], 16)

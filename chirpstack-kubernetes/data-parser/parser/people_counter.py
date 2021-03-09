@@ -12,7 +12,7 @@ def people_counter(payload_hex):
     decoded_payload = {}
 
     if len(bytes_) != 17:
-        print('ERROR: Wrong payload length')
+        print('WARNING:: Wrong payload length')
     elif bytes_[0] == 0xbe and bytes_[1] == 0x01 and bytes_[2] == 0x04:
 
         decoded_payload['RightToLeft'] = (bytes_[3] << 8 | bytes_[4])
@@ -26,7 +26,7 @@ def people_counter(payload_hex):
         decoded_payload['TEMP'] = floor(bin16dec(temp) / 10)
 
     else:
-        print('ERROR: PCR2 application payload should start with be0104..')
+        print('WARNING:: PCR2 application payload should start with be0104..')
 
     return decoded_payload
 
