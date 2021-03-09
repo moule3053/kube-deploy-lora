@@ -12,7 +12,7 @@ def indoor_env(data_hex):
     #01 00 93 02 46 03 01 18 04 03 f7 05 00 1d 12 3f 09 c3 2f 3f 44 01 dc c0 
     #06 ce 08 04 82 57 40 d0 9f ab 58 40 eb 55 c6 59 40 f7 40 3c 5a 40 f9 a2 5a
     if len(data_hex) < 90:
-        print("Wrong data length")
+        print("WARNING: Wrong data length")
         return payload_dict
 
     key = data_hex[0:2]
@@ -61,8 +61,8 @@ def indoor_env(data_hex):
     key = data_hex[38:40]
     if key != "3f":
         print("Key wrong")
-    payload_dict['CO2'] =  round(struct.unpack('>f', bytes.fromhex(data_hex[40:48]))[0], 2)
-    payload_dict['CO2_unit'] = 'ppm'       
+    payload_dict['CO2e'] =  round(struct.unpack('>f', bytes.fromhex(data_hex[40:48]))[0], 2)
+    payload_dict['CO2e_unit'] = 'ppm'       
 
 
     key = data_hex[48:50]

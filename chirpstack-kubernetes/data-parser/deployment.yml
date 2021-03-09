@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: data-parser
-        image: lillywu/data-parser:v4
+        image: lillywu/data-parser:v5
         env:
         - name: MQTT_SERVER
           value: mosquitto

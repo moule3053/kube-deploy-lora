@@ -11,7 +11,7 @@ def traffic_counter(payload_hex):
     decoded_payload = {}
 
     if len(bytes_) != 33:
-        print('ERROR: Wrong payload length')
+        print('WARNING: Wrong payload length')
 
     # Check for Parametric TCR v2 payload
     elif bytes_[0] == 0xbe and bytes_[1] == 0x02 and bytes_[2] == 0x02:
@@ -46,7 +46,7 @@ def traffic_counter(payload_hex):
         decoded_payload['Right3_AVG'] = bytes_[32]
 
     else:
-        print('ERROR: TCR application payload V2 should start with be0202..')
+        print('WARNING: TCR application payload V2 should start with be0202..')
 
     return decoded_payload
 
