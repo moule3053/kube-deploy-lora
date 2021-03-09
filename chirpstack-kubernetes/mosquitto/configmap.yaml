@@ -27,18 +27,27 @@ metadata:
   name: password-file
 data:
   passwd: |-
-    fogguru:$7$101$8NqCJ2mgoToLAWtA$qPFwmF5lqZzBxC+Z97m2qnWwSUW8sEFinrSW4NnmE4Bnbpd90ZH946ei7OdRzF4sTv1c3xnCNCGHhDWqI/4v4Q==
-    user-1:$7$101$IFNp3n5qmOeBvbpx$eVw57tb//4zbRlB0kreDmS7hWizCFaEckEaL67nvGGEiPg7Aacq0SzMXV0u6YysCeLkPYg5iI9iHnNpUabse8Q==
-    user-2:$7$101$scCH1HEqYFah/UoC$2yauYPPGbSEasEYufCMkLKrFHbxo8bzsibyKEkHXFQrcEyfIMxiCFdtlAEEgLbLZA0gBw2aEuPnj7TdSKz7zxA==
-    user-3:$7$101$JgRFxWXlO4OIcsql$W7RJ8tDixTMT1WSzrHfSOSS5FBpQeWawk70U9WzftNh60pxfXh/tWM40D5KOQ0lh3Gr2pkeSS2rtHHF5qJKTww==
-    user-4:$7$101$vev0cHuTAmFE0KiS$sVa9KN6kEDWQCxF9D/6k3ZzOhkxIuD2knI6/In6f1DiXhRk6a619tByuGUB8X9A+mV9xECCr9cuBj02e7/2Ipg==
-    user-5:$7$101$kUrLzrqLX+X4/1SN$kZ0/vvtR0/Nk8u2ig0FgrCgjKRnzaCW2zaOaJxSi/2mupdDm341BRmYm1qG/yHRXYxyj6oZDnTAmQQ1LobVcfg==
-    user-6:$7$101$8MdwD6+leHR/ehDL$5XcW+Ishr+WeIksoZaN313HRZI2Umufgygpgv6mvG4aYX7sgkHmQkKsjP1bvZqmJYUKs8LFLrwwj2FGuCRQHtA==
-    user-7:$7$101$xc4mCUHcRuhSZjTH$QL14eMBmEwzrq3FGv9kYTtuaUS6EHUlSfc+SusVielvioRZ11paIYX6U3LX5ySu8GTy0vLwfdfYKZ6HGQiJmeA==
-    user-8:$7$101$ba5H4R2uud8D7Smh$b0fWT0lXLWN4vV3gLpqTiTAegOUekWs3NJOE+2vJQAetT8MqCN3XQz7dM1ROB2qlnIDgM53thBltD1e9KlBYdg==
-    user-9:$7$101$zzUJ8toii5oIQygK$3/6uClp3Ed66gQvxUaUudAVF5M0+veMsLVYf3YYU18suuAlif7DUrYqshPODWxgiCbchfh+Bouci+rRFJsOO2A==
-    user-10:$7$101$7aoaHALZpymd9odJ$mgM/ReiQlIDyb/awtpbI/IU94gZlSIePkNsfZew8NE4S4l4/aG367oNPXtZ1yU57fhi68p/tNW6POx662tG1YA==
-    user-11:$7$101$zQKq0bGT7uPsOoPO$Aj2KvowG1b/UU1wKjFzV0bDstP9o4YUU6CLAxh0H/rSNh3eW9RnpcpdnfOP8IavWTGSiwJD3CGLNmeZUVgxKoQ==
+    fogguru:$7$101$ROyxrtj3tfT7Haq6$UuoP2wdHipg6KS23Lqpx+ICSPgv7wcjgRMfevXiVoxd/d81kmEsP4vyxxBi494MuMTR7EPCK29bo/UZA2NBMbg==
+    team-1:$7$101$m6doKwhi+mUcHP/+$eyr6l3CkKZW8BDHzD7fckql1XvWPvq3Rw+lLwrvfAscRtrCmD20+JJIYizV39CmM1Cshu2yyTJTUoQyVuLkZ7w==
+    team-2:$7$101$yU8Bgi51Q8S4sJ8R$qKN9exkeX1H5hOuIVCKujWP0OK0vbwCbXEzK3AfC9CsYlAlV1xq5sfcJG5Fd2VJ+Hbp7GNgPG5+dhTHEDLoUNA==
+    team-3:$7$101$SKQzOZ+Jod/rkMVa$XCXQvnebd05gFLqodE/SOyl6wxrC8VBzgAo73aWeYQyRAv8H21WOyJ2lbDAFjwtcLJ6RCM1vvcWjloQcS+IFyQ==
+    team-4:$7$101$RuMO/ic7sWue1Wn4$BY4sweLs3hnIEKtNioN6wjE9dCkf/O05NvLORpbolzBXba2KoGxlNdxyoNTZmcV4WbuBWkj97Ndfx44hlyoLAw==
+    team-5:$7$101$unAaLwLpLeAcjKT7$xR/kKCmfc/p8DNJIlYmomMD3BOaV4WC1BPmag/l5YzLTG5mPRxS6pY0RZVdSKziCLHHJFIqu7MpPMWSEIFxeMw==
+    team-6:$7$101$hEGpuMbx6ewWTUmv$0/988mg3qeMQ7h/6OlDzXg7DqOTqKwGt8E1gC1ANfDQjUVjbUIeEQ2wTLVBc9/eEl51rfLxSYl1ML2Oc2i5K5Q==
+    team-7:$7$101$NelZrtmDTLmWjFll$PWf5eGflwmK4fqIPb3q4v8FaYr6HNJ5inb3wWiOhB4gVptQg1jnqUR/XTmIi2q3PTPrn5a7eyKsHI6ffwVDPEg==
+    team-8:$7$101$/JYF/DQthc+o0Ftg$oYuAsEKwMbizf+UOhTD5JicaFsJLrt4roAQUsgJmXr0IOBH9y6ZcSCBc3NxIBXxEXqG7PcA59uLt3bO2VVUuog==
+    team-9:$7$101$/4G8rX+j1FW8jAeb$JCjOpojXzpy+bE3K4uWAIVgodQtNs6Vq4hHcluBtZO+xT5WO5n3mGPJ/R1EVWCp0NCzLYGfm4Ya1QOgN7xNTMg==
+    team-10:$7$101$zVyvheCLKdoBHI0h$gkVdWduT93SrtV2SUYwnOizK74ho6bwbfgun137tNO5L4SWe8WMC5R0FwqBHeY8z2fQhxGlTfrLCTe2mMjao1A==
+    team-11:$7$101$Vm3JFivs80+s/F6B$wUewaRf0RKpGpVyT4wrZ3H8J6Q1gmTw1buEH2qQLLWpt+hBOHYoXzpl0jdlufu+IYOsvaFTtSOI6COkWqPDV+w==
+    team-12:$7$101$etlAhb8n0OMR9J8b$oC9YN4tIEfmOJPbh8z2fTsExOAyRRPxelNoP+d2xuNKQMw9cem+xgBalm2bRn5pDZQXVP8GPyj/9pyUZM7g4Fw==
+    team-13:$7$101$YGcRfFMIoqCSFnin$PB6uJ7NxLQi7NtUQ5b43GNWi+p7/E++mZIwnMoEv97c22xnH7HYoKfmghinp/T4ytAvVpZ30cufK1FEy9bl+xg==
+    team-14:$7$101$RjfAVLDY4I+hC5d5$Zd64ejf8T4ROzyhAVSN15MdLefiSHDs6Q8QqCiy59OGEu3urDjVwmdYcuL/zJa1QSNBLGcWHxbWNkW05O/DmvA==
+    team-15:$7$101$O8dxl5fjlFaor0d/$GzYpAKenzr/DGD0iaT2hEuR5TqQb48fLP3A9tAmoZd6SMnNCe9gEYWs0/ObDT+gKKPPNNb4CFb8OCfPz2UE/Ew==
+    team-16:$7$101$qbizSz2myuSyhiZa$0a4IFd4RbjNgDtnDQfkdEefchxVPIbu1eCUmkKPzskiCwEyIylkSnMNK5KYXTSIqcVw2vCeOhIfp6sUo27hXGQ==
+    team-17:$7$101$ClbVyT+MMYYphbFc$qRHYjHv8HPZIt4JIaqGtObjxzExMR9PDudfL5cCgFvGuWsTwrOwdCFTsH2lh9jY8bk9CjGmLyw9AEeaHDvhVFw==
+    team-18:$7$101$Toxz1fYQXWShS3fi$KBRoLpBdY6vsUNLlv62eU+eyUehld2itAUAnpbD89jXjBe+Gms4tisOQyJg/zZQHRMFovhPztRSjun4v2cK46w==
+    team-19:$7$101$qYuFyHg82Gu3/Ptm$XTbcOvJJy/n+cSQgbTIO3Kzd6uZF8P0cvhKemp1ODqW01sHZ02t8tJsRFMBtpTFKNPFrYSedQxKi1JUZkpDSMQ==
+    team-20:$7$101$7ggBcq7H8cbJMQp8$UxdjoZD0HUmfeARqmKhg4QFLETBOb85HqoX2ixXZtUTBONpNZSnXAAQbv8VP7IIyWsD+BbyBqlabxMKYt3ptVA==
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -50,23 +59,32 @@ data:
     user fogguru
     topic readwrite #
 
-    #username "user" can read only topic "test"
-    user user-1
-    topic read test1
-    topic read test2
-    topic read test3
+    #username "user" can read only topic "sensor"
+    #user team-1
+    #topic read sensor1
+    #topic read sensor2
+    #topic read sensor3
 
-    user user-2
-    topic read test1
-    topic read test2
-    topic read test3
-    
-    user user-3
-    topic read test1
-    topic read test2
-    topic read test3
+    #general template that anyone can read from topic
+    pattern read sensor1
+    pattern read sensor2
+    pattern read sensor3
+    pattern read sensor4
 
-    user user-4
-    topic read test1
-    topic read test2
-    topic read test3
+    user team-1
+    topic write team-1/#
+
+    user team-2
+    topic write team-2/#
+
+    user team-3
+    topic write team-3/#
+
+    user team-4
+    topic write team-4/#
+
+    user team-5
+    topic write team-5/#
+
+    user team-6
+    topic write team-6/#
