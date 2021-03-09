@@ -7,14 +7,13 @@ kubectl apply -f ./mosquitto/deployment.yml
 envsubst < ./mosquitto/service.yml | kubectl apply -f -
 
 kubectl apply -f ./influxdb/influxdb-glusterfs-endpoint.yaml
-kubectl apply -f ./influxdb/deployment.yml
+kubectl apply -f ./influxdb/configmap.yml
 kubectl apply -f ./influxdb/storage.yml
+kubectl apply -f ./influxdb/deployment.yml
 envsubst < ./influxdb/service.yml | kubectl apply -f -
 
 kubectl apply -f ./postgres/
 kubectl apply -k redis/.
-
-# kubectl apply -f ./chirpstack-gateway-bridge/
 
 kubectl apply -f ./chirpstack-network-server/configMap.yml
 kubectl apply -f ./chirpstack-network-server/deployment.yml
