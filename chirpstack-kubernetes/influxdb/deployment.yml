@@ -26,7 +26,7 @@ spec:
             - name: INFLUXDB_USER
               value: fogguru
             - name: INFLUXDB_USER_PASSWORD
-              value: fogguru
+              value: FogGuru2020
           volumeMounts:
             - name: influx-pv
               mountPath: /var/lib/influxdb

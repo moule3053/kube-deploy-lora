@@ -17,6 +17,8 @@ data:
 
     [application_server.integration.mqtt]
     server="tcp://mosquitto:1883"
+    username="fogguru"
+    password="FogGuru2020"
 
     [application_server.api]
     bind="0.0.0.0:8001"

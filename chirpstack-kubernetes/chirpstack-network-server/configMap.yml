@@ -53,6 +53,8 @@ data:
 
     [network_server.gateway.backend.mqtt]
     server="tcp://mosquitto:1883"
+    username="fogguru"
+    password="FogGuru2020"
 
     [join_server.default]
     #server="http://192.168.0.175:8009"
