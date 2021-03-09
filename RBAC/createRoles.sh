@@ -1,5 +1,5 @@
-export varnamespace=[team1-namespace]
-export varsaname=[team1-sa]
+export varnamespace=team1-namespace
+export varsaname=team1-sa
 
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
