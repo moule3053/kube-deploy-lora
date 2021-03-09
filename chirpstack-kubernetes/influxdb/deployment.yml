@@ -20,13 +20,13 @@ spec:
           ports:
             - containerPort: 8086
               name: influx
-          env:
-            - name: INFLUXDB_ADMIN_USER
-              value: admin
-            - name: INFLUXDB_ADMIN_PASSWORD
-              value: admin
-            - name: INFLUXDB_HTTP_AUTH_ENABLED
-              value: 'true'
+          # env:
+          #   - name: INFLUXDB_ADMIN_USER
+          #     value: admin
+          #   - name: INFLUXDB_ADMIN_PASSWORD
+          #     value: admin
+          #   - name: INFLUXDB_HTTP_AUTH_ENABLED
+          #     value: 'true'
           #   - name: INFLUXDB_DB
           #     value: chirpstack_as
           #   - name: INFLUXDB_USER
