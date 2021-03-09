@@ -27,27 +27,8 @@ metadata:
   name: password-file
 data:
   passwd: |-
-    fogguru:$7$101$ROyxrtj3tfT7Haq6$UuoP2wdHipg6KS23Lqpx+ICSPgv7wcjgRMfevXiVoxd/d81kmEsP4vyxxBi494MuMTR7EPCK29bo/UZA2NBMbg==
-    team-1:$7$101$m6doKwhi+mUcHP/+$eyr6l3CkKZW8BDHzD7fckql1XvWPvq3Rw+lLwrvfAscRtrCmD20+JJIYizV39CmM1Cshu2yyTJTUoQyVuLkZ7w==
-    team-2:$7$101$yU8Bgi51Q8S4sJ8R$qKN9exkeX1H5hOuIVCKujWP0OK0vbwCbXEzK3AfC9CsYlAlV1xq5sfcJG5Fd2VJ+Hbp7GNgPG5+dhTHEDLoUNA==
-    team-3:$7$101$SKQzOZ+Jod/rkMVa$XCXQvnebd05gFLqodE/SOyl6wxrC8VBzgAo73aWeYQyRAv8H21WOyJ2lbDAFjwtcLJ6RCM1vvcWjloQcS+IFyQ==
-    team-4:$7$101$RuMO/ic7sWue1Wn4$BY4sweLs3hnIEKtNioN6wjE9dCkf/O05NvLORpbolzBXba2KoGxlNdxyoNTZmcV4WbuBWkj97Ndfx44hlyoLAw==
-    team-5:$7$101$unAaLwLpLeAcjKT7$xR/kKCmfc/p8DNJIlYmomMD3BOaV4WC1BPmag/l5YzLTG5mPRxS6pY0RZVdSKziCLHHJFIqu7MpPMWSEIFxeMw==
-    team-6:$7$101$hEGpuMbx6ewWTUmv$0/988mg3qeMQ7h/6OlDzXg7DqOTqKwGt8E1gC1ANfDQjUVjbUIeEQ2wTLVBc9/eEl51rfLxSYl1ML2Oc2i5K5Q==
-    team-7:$7$101$NelZrtmDTLmWjFll$PWf5eGflwmK4fqIPb3q4v8FaYr6HNJ5inb3wWiOhB4gVptQg1jnqUR/XTmIi2q3PTPrn5a7eyKsHI6ffwVDPEg==
-    team-8:$7$101$/JYF/DQthc+o0Ftg$oYuAsEKwMbizf+UOhTD5JicaFsJLrt4roAQUsgJmXr0IOBH9y6ZcSCBc3NxIBXxEXqG7PcA59uLt3bO2VVUuog==
-    team-9:$7$101$/4G8rX+j1FW8jAeb$JCjOpojXzpy+bE3K4uWAIVgodQtNs6Vq4hHcluBtZO+xT5WO5n3mGPJ/R1EVWCp0NCzLYGfm4Ya1QOgN7xNTMg==
-    team-10:$7$101$zVyvheCLKdoBHI0h$gkVdWduT93SrtV2SUYwnOizK74ho6bwbfgun137tNO5L4SWe8WMC5R0FwqBHeY8z2fQhxGlTfrLCTe2mMjao1A==
-    team-11:$7$101$Vm3JFivs80+s/F6B$wUewaRf0RKpGpVyT4wrZ3H8J6Q1gmTw1buEH2qQLLWpt+hBOHYoXzpl0jdlufu+IYOsvaFTtSOI6COkWqPDV+w==
-    team-12:$7$101$etlAhb8n0OMR9J8b$oC9YN4tIEfmOJPbh8z2fTsExOAyRRPxelNoP+d2xuNKQMw9cem+xgBalm2bRn5pDZQXVP8GPyj/9pyUZM7g4Fw==
-    team-13:$7$101$YGcRfFMIoqCSFnin$PB6uJ7NxLQi7NtUQ5b43GNWi+p7/E++mZIwnMoEv97c22xnH7HYoKfmghinp/T4ytAvVpZ30cufK1FEy9bl+xg==
-    team-14:$7$101$RjfAVLDY4I+hC5d5$Zd64ejf8T4ROzyhAVSN15MdLefiSHDs6Q8QqCiy59OGEu3urDjVwmdYcuL/zJa1QSNBLGcWHxbWNkW05O/DmvA==
-    team-15:$7$101$O8dxl5fjlFaor0d/$GzYpAKenzr/DGD0iaT2hEuR5TqQb48fLP3A9tAmoZd6SMnNCe9gEYWs0/ObDT+gKKPPNNb4CFb8OCfPz2UE/Ew==
-    team-16:$7$101$qbizSz2myuSyhiZa$0a4IFd4RbjNgDtnDQfkdEefchxVPIbu1eCUmkKPzskiCwEyIylkSnMNK5KYXTSIqcVw2vCeOhIfp6sUo27hXGQ==
-    team-17:$7$101$ClbVyT+MMYYphbFc$qRHYjHv8HPZIt4JIaqGtObjxzExMR9PDudfL5cCgFvGuWsTwrOwdCFTsH2lh9jY8bk9CjGmLyw9AEeaHDvhVFw==
-    team-18:$7$101$Toxz1fYQXWShS3fi$KBRoLpBdY6vsUNLlv62eU+eyUehld2itAUAnpbD89jXjBe+Gms4tisOQyJg/zZQHRMFovhPztRSjun4v2cK46w==
-    team-19:$7$101$qYuFyHg82Gu3/Ptm$XTbcOvJJy/n+cSQgbTIO3Kzd6uZF8P0cvhKemp1ODqW01sHZ02t8tJsRFMBtpTFKNPFrYSedQxKi1JUZkpDSMQ==
-    team-20:$7$101$7ggBcq7H8cbJMQp8$UxdjoZD0HUmfeARqmKhg4QFLETBOb85HqoX2ixXZtUTBONpNZSnXAAQbv8VP7IIyWsD+BbyBqlabxMKYt3ptVA==
+    fogguru:$7$101$zqJq60prFOkHQ8KM$jTqPgC7Owxn8QtHLWI+pqHlp4MtiVQCNe1A5TTEA082N9hkV9RDkzx33bgOfArQnaH735n8aGt6fGd63EWapNQ==
+    user:$7$101$tCQHNuMvBG1NyGLb$Cw2Z/zwyzZMvs7nIjOr4QeNoWYgBYfQvKx0uYRHnovLQI4czk+6YLMpXQsyV1oM9T+fHChx1ylzqO37xi6SSgA==
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -60,22 +41,5 @@ data:
     topic readwrite #
 
     #general template that anyone can read from topic
-    pattern read #
-
-    user team-1
-    topic write team-1/#
-
-    user team-2
-    topic write team-2/#
-
-    user team-3
-    topic write team-3/#
-
-    user team-4
-    topic write team-4/#
-
-    user team-5
-    topic write team-5/#
-
-    user team-6
-    topic write team-6/#
+    user user
+    topic read #
