@@ -4,9 +4,18 @@ metadata:
   namespace: $varnamespace
   name: team-admin
 rules:
-- apiGroups: ["","apps"]
+- apiGroups: [""]
   resources: ["pods","pods/log", "pods/portforward", 
-              "deployments", "deployments/logs",
               "services", "services/logs"
               ]
   verbs: ["create","get", "list", "watch", "delete"]
+
+- apiGroups: ["apps","extensions",]
+  resources: [ "deployments", "deployments/logs"
+              ]
+  verbs: ["get", "list", "watch", "create", "update", "patch", "delete"]
+
+- apiGroups: [""]
+  resources: ["configmaps"]
+  resourceNames: ["my-config"]
+  verbs: ["get"]
