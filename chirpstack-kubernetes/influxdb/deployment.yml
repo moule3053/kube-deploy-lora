@@ -20,7 +20,11 @@ spec:
           ports:
             - containerPort: 8086
               name: influx
-          # env:
+          env:
+            - name: INFLUXDB_ADMIN_USER
+              value: fogguru
+            - name: INFLUXDB_ADMIN_PASSWORD
+              value: FogGuru2020
           #   - name: INFLUXDB_DB
           #     value: chirpstack_as
           #   - name: INFLUXDB_USER
