@@ -59,17 +59,8 @@ data:
     user fogguru
     topic readwrite #
 
-    #username "user" can read only topic "sensor"
-    #user team-1
-    #topic read sensor1
-    #topic read sensor2
-    #topic read sensor3
-
     #general template that anyone can read from topic
-    pattern read sensor1
-    pattern read sensor2
-    pattern read sensor3
-    pattern read sensor4
+    pattern read #
 
     user team-1
     topic write team-1/#
