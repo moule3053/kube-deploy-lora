@@ -20,17 +20,23 @@ spec:
           ports:
             - containerPort: 8086
               name: influx
-          env:
-            - name: INFLUXDB_DB
-              value: chirpstack_as
-            - name: INFLUXDB_USER
-              value: fogguru
-            - name: INFLUXDB_USER_PASSWORD
-              value: FogGuru2020
+          # env:
+          #   - name: INFLUXDB_DB
+          #     value: chirpstack_as
+          #   - name: INFLUXDB_USER
+          #     value: fogguru
+          #   - name: INFLUXDB_USER_PASSWORD
+          #     value: FogGuru2020
           volumeMounts:
             - name: influx-pv
               mountPath: /var/lib/influxdb
+            - name: influxdb-config
+              mountPath: /etc/influxdb/influxdb.conf
+              subPath: influxdb.conf
       volumes:
         - name: influx-pv
           persistentVolumeClaim:
             claimName: influx-pv-claim
+        - name: influxdb-config
+          configMap:
+            name: influxdb-config
