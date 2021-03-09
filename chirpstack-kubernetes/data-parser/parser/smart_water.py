@@ -71,9 +71,11 @@ def smart_water(data_hex, protocol_file):
         # print(index_start, index_end)
         # print(data_type)
         if data_type == 'uint8_t':
-            sensor_value = int(data_hex[index_start:index_end], 16)
+            sensor_value = struct.unpack('B', bytes.fromhex(data_hex[index_start:index_end]))[0]
+            #int(data_hex[index_start:index_end], 16)
         elif data_type == 'uint16_t':
-            sensor_value = int(to_little(data_hex[index_start:index_end]), 16)
+            sensor_value = struct.unpack('<H', bytes.fromhex(data_hex[index_start:index_end]))[0]
+            # int(to_little(data_hex[index_start:index_end]), 16)
         elif data_type == 'float':
             sensor_value = round(struct.unpack('<f', bytes.fromhex(data_hex[index_start:index_end]))[0], data_precision)
             # print(type(sensor_value))

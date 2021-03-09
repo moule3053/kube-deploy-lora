@@ -5,6 +5,10 @@ def wind(data_hex):
     # 02 20 e7 00 03 80 0a 81 da 80 0a 80 c1 7c 7c 83 84 80 07 80 07 0b 71
     payload_dict = {}
     
+    if len(data_hex) < 46:
+        print("Wrong data length")
+        return payload_dict
+    
     value = int(data_hex[10:14], 16)
     # print(data_hex[10:14], value)
     payload_dict['Windspeed'] =  str(round((value-32768)/100.0, 2)) 
