@@ -1,12 +1,12 @@
-picoip=https://192.168.9.20:6443
-clustername=picocluster2
-mkdir pico2
+picoip=https://192.168.9.65:6443
+clustername=picocluster7
+mkdir pico7
 
 export varnamespace=team1-namespace
 export varsaname=team1-sa
-username=team1-picocluster2-user
-contextname=team1-pico2-context
-configname=pico2/team1-pico2-config
+username=team1-picocluster7-user
+contextname=team1-pico7-context
+configname=pico7/team1-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -55,9 +55,9 @@ users:
 ################################################################################
 export varnamespace=team2-namespace
 export varsaname=team2-sa
-username=team2-picocluster2-user
-contextname=team2-pico2-context
-configname=pico2/team2-pico2-config
+username=team2-picocluster7-user
+contextname=team2-pico7-context
+configname=pico7/team2-pico7-config
 
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
@@ -107,9 +107,9 @@ users:
 ################################################################################
 export varnamespace=team3-namespace
 export varsaname=team3-sa
-username=team3-picocluster2-user
-contextname=team3-pico2-context
-configname=pico2/team3-pico2-config
+username=team3-picocluster7-user
+contextname=team3-pico7-context
+configname=pico7/team3-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -158,9 +158,9 @@ users:
 ################################################################################
 export varnamespace=team4-namespace
 export varsaname=team4-sa
-username=team4-picocluster2-user
-contextname=team4-pico2-context
-configname=pico2/team4-pico2-config
+username=team4-picocluster7-user
+contextname=team4-pico7-context
+configname=pico7/team4-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -209,9 +209,9 @@ users:
 ################################################################################
 export varnamespace=team5-namespace
 export varsaname=team5-sa
-username=team5-picocluster2-user
-contextname=team5-pico2-context
-configname=pico2/team5-pico2-config
+username=team5-picocluster7-user
+contextname=team5-pico7-context
+configname=pico7/team5-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -260,9 +260,9 @@ users:
 ################################################################################
 export varnamespace=team6-namespace
 export varsaname=team6-sa
-username=team6-picocluster2-user
-contextname=team6-pico2-context
-configname=pico2/team6-pico2-config
+username=team6-picocluster7-user
+contextname=team6-pico7-context
+configname=pico7/team6-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -311,9 +311,9 @@ users:
 ################################################################################
 export varnamespace=team7-namespace
 export varsaname=team7-sa
-username=team7-picocluster2-user
-contextname=team7-pico2-context
-configname=pico2/team7-pico2-config
+username=team7-picocluster7-user
+contextname=team7-pico7-context
+configname=pico7/team7-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -362,9 +362,9 @@ users:
 ################################################################################
 export varnamespace=team8-namespace
 export varsaname=team8-sa
-username=team8-picocluster2-user
-contextname=team8-pico2-context
-configname=pico2/team8-pico2-config
+username=team8-picocluster7-user
+contextname=team8-pico7-context
+configname=pico7/team8-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -413,9 +413,9 @@ users:
 ################################################################################
 export varnamespace=team9-namespace
 export varsaname=team9-sa
-username=team9-picocluster2-user
-contextname=team9-pico2-context
-configname=pico2/team9-pico2-config
+username=team9-picocluster7-user
+contextname=team9-pico7-context
+configname=pico7/team9-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -464,9 +464,9 @@ users:
 ################################################################################
 export varnamespace=team10-namespace
 export varsaname=team10-sa
-username=team10-picocluster2-user
-contextname=team10-pico2-context
-configname=pico2/team10-pico2-config
+username=team10-picocluster7-user
+contextname=team10-pico7-context
+configname=pico7/team10-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -515,9 +515,9 @@ users:
 ################################################################################
 export varnamespace=team11-namespace
 export varsaname=team11-sa
-username=team11-picocluster2-user
-contextname=team11-pico2-context
-configname=pico2/team11-pico2-config
+username=team11-picocluster7-user
+contextname=team11-pico7-context
+configname=pico7/team11-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -566,9 +566,9 @@ users:
 ################################################################################
 export varnamespace=team12-namespace
 export varsaname=team12-sa
-username=team12-picocluster2-user
-contextname=team12-pico2-context
-configname=pico2/team12-pico2-config
+username=team12-picocluster7-user
+contextname=team12-pico7-context
+configname=pico7/team12-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -617,9 +617,9 @@ users:
 ################################################################################
 export varnamespace=team13-namespace
 export varsaname=team13-sa
-username=team13-picocluster2-user
-contextname=team13-pico2-context
-configname=pico2/team13-pico2-config
+username=team13-picocluster7-user
+contextname=team13-pico7-context
+configname=pico7/team13-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -668,9 +668,9 @@ users:
 ################################################################################
 export varnamespace=team14-namespace
 export varsaname=team14-sa
-username=team14-picocluster2-user
-contextname=team14-pico2-context
-configname=pico2/team14-pico2-config
+username=team14-picocluster7-user
+contextname=team14-pico7-context
+configname=pico7/team14-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -719,9 +719,9 @@ users:
 ################################################################################
 export varnamespace=team15-namespace
 export varsaname=team15-sa
-username=team15-picocluster2-user
-contextname=team15-pico2-context
-configname=pico2/team15-pico2-config
+username=team15-picocluster7-user
+contextname=team15-pico7-context
+configname=pico7/team15-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
@@ -770,9 +770,9 @@ users:
 ################################################################################
 export varnamespace=team16-namespace
 export varsaname=team16-sa
-username=team16-picocluster2-user
-contextname=team16-pico2-context
-configname=pico2/team16-pico2-config
+username=team16-picocluster7-user
+contextname=team16-pico7-context
+configname=pico7/team16-pico7-config
 #create namespace
 envsubst < ./team-namespace.yaml | kubectl apply -f -
 
