@@ -1,9 +1,8 @@
-# kube-deploy-lora
-
-## Deploy
+# Deploy chirpstack and software stack with kubernetes
 
 ### Replace your cluster ip with [192.168.9.12] value
 ```
+# example IP
 export myclusterIP=192.168.1.10
 ```
 
@@ -12,12 +11,42 @@ export myclusterIP=192.168.1.10
 ./generate_glusterfs_endpoints.sh
 ```
 
+## Deploying
 ### Run following to deploy all:
 ```
 sh ./deploy_all.sh
 ```
 
-### Or run following commands for debugging:
+### After running the deployment, wait for them to fully deployed
+```
+kubectl get pods
+```
+
+```
+NAME                                             READY   STATUS    RESTARTS   AGE
+chirpstack-application-server-846d8b8f8d-jn88r   1/1     Running   0          1m
+chirpstack-network-server-59dbd7845d-t7qqv       1/1     Running   0          1m
+influx-9f69d79dd-8zq8v                           1/1     Running   0          1m
+mosquitto-6c88b5b6f4-g4z99                       1/1     Running   0          1m
+nodered-7b6cf58d46-526zk                         1/1     Running   0          1m
+postgres-6995bb955c-sklm5                        1/1     Running   0          1m
+redis                                            1/1     Running   0          1m
+```
+
+### After the pod creation, create following databases:
+```
+sh ./postgres/create_db.sh
+sh ./influxdb/create_users.sh
+```
+
+## Deleting
+### If you want to delete the stack, run following to delete all:
+```
+sh ./delete_all.sh
+```
+
+## Debugging
+### You can run the following commands step by step to debug the Deployment stage:
 ```
 kubectl apply -f ./mosquitto/mosquitto-glusterfs-endpoint.yaml
 kubectl apply -f ./mosquitto/storage.yml
@@ -32,8 +61,6 @@ envsubst < ./influxdb/service.yml | kubectl apply -f -
 
 kubectl apply -f ./postgres/
 kubectl apply -k redis/.
-
-# kubectl apply -f ./chirpstack-gateway-bridge/
 
 kubectl apply -f ./chirpstack-network-server/configMap.yml
 kubectl apply -f ./chirpstack-network-server/deployment.yml
@@ -54,29 +81,7 @@ kubectl apply -f ./nodered/deployment.yml
 envsubst < ./nodered/service.yml | kubectl apply -f -
 ```
 
-### After the pod creation:
-```
-sh ./postgres/create_db.sh
-```
-
-### external IP is exposed in:
-```
-port:8080  /chirpstack-application-server/service.yml
-port:8000  /chirpstack-network-server/service.yml
-port:9090  /monitoring/prometheus.yaml
-port:3000  /monitoring/grafana.yaml
-port:1883  /mosquitto/service.yml
-port:8086  /influxdb/service.yml
-port:1880  /nodered/service.yml
-```
-
-## Delete
-### Run following to delete all:
-```
-sh ./delete_all.sh
-```
-
-### Or run following commands for deleting 1 by 1:
+### You can run the following commands step by step to debug the Deleting stage
 ```
 kubectl delete -f ./mosquitto/
 kubectl delete -f ./influxdb/
@@ -89,4 +94,16 @@ kubectl delete -f ./monitoring/
 kubectl delete -f ./nodered/
 kubectl delete pvc mosquitto postgres-pv-claim postgresinit-pv-claim
 kubectl delete pv mosquitto-pv-volume postgres-pv-volume postgresinit-pv-volume
+```
+
+## Exposing to external IPs
+### Kubernetes services are exposing external IPs to access from outside, you can change them in following files:
+```
+port:8080  /chirpstack-application-server/service.yml
+port:8000  /chirpstack-network-server/service.yml
+port:9090  /monitoring/prometheus.yaml
+port:3000  /monitoring/grafana.yaml
+port:1883  /mosquitto/service.yml
+port:8086  /influxdb/service.yml
+port:1880  /nodered/service.yml
 ```
