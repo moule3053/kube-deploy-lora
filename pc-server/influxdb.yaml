@@ -59,13 +59,13 @@ spec:
           ports:
             - containerPort: 8086
               name: influx
-          env:
-            - name: INFLUXDB_DB
-              value: sensor_data
-            - name: INFLUXDB_USER
-              value: fogguru
-            - name: INFLUXDB_USER_PASSWORD
-              value: FogGuru2020
+          # env:
+          #   - name: INFLUXDB_DB
+          #     value: sensor_data
+          #   - name: INFLUXDB_USER
+          #     value: fogguru
+          #   - name: INFLUXDB_USER_PASSWORD
+          #     value: FogGuru2020
           volumeMounts:
             - name: influx-pv
               #mountPath: /var/lib/influxdb
