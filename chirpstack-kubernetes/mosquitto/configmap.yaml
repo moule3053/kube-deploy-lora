@@ -27,8 +27,8 @@ metadata:
   name: password-file
 data:
   passwd: |-
-    fogguru:$7$101$zqJq60prFOkHQ8KM$jTqPgC7Owxn8QtHLWI+pqHlp4MtiVQCNe1A5TTEA082N9hkV9RDkzx33bgOfArQnaH735n8aGt6fGd63EWapNQ==
-    user:$7$101$tCQHNuMvBG1NyGLb$Cw2Z/zwyzZMvs7nIjOr4QeNoWYgBYfQvKx0uYRHnovLQI4czk+6YLMpXQsyV1oM9T+fHChx1ylzqO37xi6SSgA==
+    fogguru:$7$101$OsMky/RsfbpeUELq$EB/LjP5X5dvw6NQi5Ozeg9ik8ILiO7cKwkBIoez4oXag2qRJOSXvub1ig8HblPZiWtXYdBLBoajuzIhvuWoMLg==
+    participant:$7$101$s1j3Xvpe8WkuICVh$qePD2NJB/ipLbTwQFi/6+JCWBnVfc1LoehPvf2gikvUA6Cu6vu75e0O1dRg3bU8eEg4PXR6GpDCxH9h0RBJHrQ==
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -41,5 +41,5 @@ data:
     topic readwrite #
 
     #general template that anyone can read from topic
-    user user
+    user participant
     topic read #
