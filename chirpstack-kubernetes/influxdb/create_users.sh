@@ -13,5 +13,9 @@ kubectl exec -i deployment/influx -- influx -username fogguru -password 'FogGuru
 EOSQL
 
 kubectl exec -i deployment/influx -- influx -username fogguru -password 'FogGuru2020' <<-EOSQL
+    GRANT ALL ON sensor_data TO fogguru
+EOSQL
+
+kubectl exec -i deployment/influx -- influx -username fogguru -password 'FogGuru2020' <<-EOSQL
     GRANT READ ON sensor_data TO participant
 EOSQL
