@@ -1,23 +1,25 @@
 # Deploy chirpstack and software stack with kubernetes
 
-### Replace your cluster ip with [192.168.9.12] value
+### Replace your cluster ip with [myclusterIP] value
+myclusterIP is the host IP address, acts as a manager in GlusterFS
+
 ```
-# example IP
 export myclusterIP=192.168.1.10
 ```
 
-### Generate GlusterFS Endpoints files: edit the IP address range in the file first
+### Generate GlusterFS Endpoints files
+Edit the IP address range in the file first using a text editor
 ```
 ./generate_glusterfs_endpoints.sh
 ```
 
 ## Deploying
-### Run following to deploy all:
+Run following to deploy all
 ```
 sh ./deploy_all.sh
 ```
 
-### After running the deployment, wait for them to fully deployed
+After running the deployment, wait for them to fully deployed
 ```
 kubectl get pods
 ```
