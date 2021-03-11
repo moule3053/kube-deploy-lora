@@ -102,11 +102,11 @@ def data_parser(payload_dict):
 def influxdb_update(influxdb_server, influxdb_dict):
     host = influxdb_server
     port = 8086
-    user = 'foggugu'
-    password = 'fogguru'
+    user = 'fogguru'
+    password = 'FogGuru2020'
     dbname = 'sensor_data'
 
-    
+    # print(host, port, user, password)
     client = InfluxDBClient(host, port, user, password, dbname)
     
     dbs = client.get_list_database()
@@ -139,7 +139,6 @@ def on_message(client, userdata, msg):
     
         print("INFO: Parsed data", topic, mqtt_message_string)
         client.publish(topic, mqtt_message_string)
-        
         
         if local_influxdb != 'disable' :
             print("INFO: Update influxdb in fog")
@@ -179,7 +178,7 @@ if __name__ == '__main__':
     
 
     client = mqtt.Client()
-    # client.username_pw_set(username="fogguru",password="FogGuru2020")
+    client.username_pw_set(username="fogguru",password="FogGuru2020")
     client.connect(mqtt_server)
     
     client.on_connect = on_connect
