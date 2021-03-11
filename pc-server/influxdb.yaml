@@ -68,8 +68,8 @@ spec:
               value: FogGuru2020
           volumeMounts:
             - name: influx-pv
-              #mountPath: /var/lib/influxdb
-              mountPath: /root/.influxdbv2
+              mountPath: /var/lib/influxdb
+              #mountPath: /root/.influxdbv2
       volumes:
         - name: influx-pv
           persistentVolumeClaim:
