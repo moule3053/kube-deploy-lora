@@ -8,13 +8,23 @@ export myclusterIP=192.168.1.10
 ```
 
 ### Generate GlusterFS Endpoints files
-Edit the IP address range in the file first using a text editor
+Edit the IP address range in the <mark>generate_glusterfs_endpoints.sh</mark> file first using a text editor
+
+```
+for i in {11..19} -> change your cluster address range here
+do
+echo "- addresses:
+  - ip: 192.168.9.$i
+  ports:
+```
+
+Run the glusterFS generation script
 ```
 ./generate_glusterfs_endpoints.sh
 ```
 
 ## Deploying
-Run following to deploy all
+Run following to deploy all software stack
 ```
 sh ./deploy_all.sh
 ```
@@ -35,20 +45,20 @@ postgres-6995bb955c-sklm5                        1/1     Running   0          1m
 redis                                            1/1     Running   0          1m
 ```
 
-### After the pod creation, create following databases:
+After the pod creation, create the databases:
 ```
 sh ./postgres/create_db.sh
 sh ./influxdb/create_users.sh
 ```
 
 ## Deleting
-### If you want to delete the stack, run following to delete all:
+If you want to delete the stack, run following to delete all:
 ```
 sh ./delete_all.sh
 ```
 
 ## Debugging
-### You can run the following commands step by step to debug the Deployment stage:
+You can run the following commands step by step to debug the Deployment stage:
 ```
 kubectl apply -f ./mosquitto/mosquitto-glusterfs-endpoint.yaml
 kubectl apply -f ./mosquitto/storage.yml
@@ -83,7 +93,7 @@ kubectl apply -f ./nodered/deployment.yml
 envsubst < ./nodered/service.yml | kubectl apply -f -
 ```
 
-### You can run the following commands step by step to debug the Deleting stage
+You can run the following commands step by step to debug the Deleting stage
 ```
 kubectl delete -f ./mosquitto/
 kubectl delete -f ./influxdb/
@@ -99,7 +109,7 @@ kubectl delete pv mosquitto-pv-volume postgres-pv-volume postgresinit-pv-volume
 ```
 
 ## Exposing to external IPs
-### Kubernetes services are exposing external IPs to access from outside, you can change them in following files:
+Kubernetes services are exposing external IPs to access from outside, you can enable/disable exposing IP addresses at the end of following files:
 ```
 port:8080  /chirpstack-application-server/service.yml
 port:8000  /chirpstack-network-server/service.yml
@@ -108,4 +118,9 @@ port:3000  /monitoring/grafana.yaml
 port:1883  /mosquitto/service.yml
 port:8086  /influxdb/service.yml
 port:1880  /nodered/service.yml
+```
+
+```
+externalIPs:
+- $myclusterIP
 ```
