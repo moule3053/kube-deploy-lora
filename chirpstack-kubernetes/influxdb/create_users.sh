@@ -1,5 +1,9 @@
 #!/bin/bash
 
+kubectl exec -i deployment/influx -- influx <<-EOSQL
+    CREATE DATABASE sensor_data
+EOSQL
+
 kubectl exec -i service/influx -- influx <<-EOSQL
 	CREATE USER fogguru WITH PASSWORD 'FogGuru2020' WITH ALL PRIVILEGES
 EOSQL
