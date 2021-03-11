@@ -20,6 +20,11 @@ kube_version: v1.18.0
 ...
 network: flannel
 ```
+
+### If you need to change the default password of the user picocluster, run from kubeadm-ansible directory:
+```
+ansible-playbook -i hosts.ini change-password.yml --extra-vars newpassword=NEWPASSWORD
+```
 ### From kubeadm-ansible directory:
 ```
 ansible-playbook -i hosts.ini site.yaml
