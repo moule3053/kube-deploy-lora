@@ -59,9 +59,9 @@ spec:
           ports:
             - containerPort: 8086
               name: influx
-          # env:
-          #   - name: INFLUXDB_DB
-          #     value: sensor_data
+          env:
+            - name: INFLUXDB_DB
+              value: sensor_data
           #   - name: INFLUXDB_USER
           #     value: fogguru
           #   - name: INFLUXDB_USER_PASSWORD
