@@ -1,40 +1,6 @@
 # Kubeadm Ansible Playbook
 
-<mark>before running, edit the hosts.ini file with your IP range</mark>
-
-
-This repo is forked from https://github.com/kairen/kubeadm-ansible
-few things are edited:
-
-* Edited the fixed version of K8s in /roles/kubernetes/master/meta 
-```
-kubelet=1.18.0-00", "kubeadm=1.18.0-00", "kubectl=1.18.0-00
-```
-* Edited the fixed version of K8s in /roles/kubeadm/node/meta
-```
-kubelet=1.18.0-00", "kubeadm=1.18.0-00
-```
-* Edited the network implementation in /group_vars/all.yml
-```
-kube_version: v1.18.0
-...
-network: flannel
-```
-
-### If you need to change the default password of the user picocluster, run from kubeadm-ansible directory:
-```
-ansible-playbook -i hosts.ini change-password.yml --extra-vars newpassword=NEWPASSWORD
-```
-### From kubeadm-ansible directory:
-```
-ansible-playbook -i hosts.ini site.yaml
-```
-
-Build a Kubernetes cluster using Ansible with kubeadm. The goal is easily install a Kubernetes cluster on machines running:
-
-  - Ubuntu 16.04
-  - CentOS 7
-  - Debian 9
+Build a Kubernetes cluster using Ansible with kubeadm. The goal is easily install a Kubernetes cluster.
 
 System requirements:
 
@@ -62,7 +28,7 @@ sudo gluster volume delete postgre_volume
 
 Also, make sure that the glusterfs volume replicas are set to `3` when running on PicoCluster10, and `2` when running on PicoCluster5. Edit all instances of `replicas` in file `roles/glusterfs/master/tasks/main.yml`
 
-# Usage
+# Creating Kubernetes cluster
 
 Add the system information gathered above into a file called `hosts.ini`. For example:
 ```
@@ -93,7 +59,7 @@ node
 
 Before continuing, edit `group_vars/all.yml` to your specified configuration.
 
-For example, I choose to run `flannel` instead of calico, and thus:
+For example, we choose to run `flannel` instead of calico, and thus:
 
 ```yaml
 # Network implementation('flannel', 'calico')
@@ -107,7 +73,7 @@ network: flannel
 After going through the setup, run the `site.yaml` playbook:
 
 ```sh
-$ ansible-playbook site.yaml
+$ ansible-playbook -i hosts.ini site.yaml
 ...
 ==> master1: TASK [addon : Create Kubernetes dashboard deployment] **************************
 ==> master1: changed: [192.16.35.12 -> 192.16.35.12]
@@ -145,77 +111,37 @@ etcd-master1                            1/1       Running   0          23m
 
 # Resetting the environment
 
-Finally, reset all kubeadm installed state using `reset-site.yaml` playbook:
+If you want to reset all kubeadm installed state, use `reset-site.yaml` playbook:
 
 ```sh
 $ ansible-playbook reset-site.yaml
 ```
 
-# Additional features
-These are features that you could want to install to make your life easier.
-
-Enable/disable these features in `group_vars/all.yml` (all disabled by default):
+# Changing the password
+If you need to change the default password of the user picocluster, run from `kubeadm-ansible` directory:
 ```
-# Additional feature to install
-additional_features:
-  helm: false
-  metallb: false
-  healthcheck: false
+ansible-playbook -i hosts.ini change-password.yml --extra-vars newpassword=NEWPASSWORD
 ```
 
-## Helm
-This will install helm in your cluster (https://helm.sh/) so you can deploy charts.
+# For more information
+This repo is forked and edited from https://github.com/kairen/kubeadm-ansible
+See the original repo for additional features.
 
-## MetalLB
-This will install MetalLB (https://metallb.universe.tf/), very useful if you deploy the cluster locally and you need a load balancer to access the services.
+### If you want to set the fixed version of K8s: 
 
-## Healthcheck
-This will install k8s-healthcheck (https://github.com/emrekenci/k8s-healthcheck), a small application to report cluster status.
-
-# Utils
-Collection of scripts/utilities
-
-## Vagrantfile
-This Vagrantfile is taken from https://github.com/ecomm-integration-ballerina/kubernetes-cluster and slightly modified to copy ssh keys inside the cluster (install https://github.com/dotless-de/vagrant-vbguest is highly recommended)
-
-# Tips & Tricks
-## Specify user for Ansible
-If you use vagrant or your remote user is root, add this to `hosts.ini`
+Edit `/roles/kubernetes/master/meta` 
 ```
-[master]
-192.16.35.12 ansible_user='root'
-
-[node]
-192.16.35.[10:11] ansible_user='root'
+kubelet=1.18.0-00", "kubeadm=1.18.0-00", "kubectl=1.18.0-00
+```
+Edit `/roles/kubeadm/node/meta`
+```
+kubelet=1.18.0-00", "kubeadm=1.18.0-00
 ```
 
-## Access Kubernetes Dashboard
-As of release 1.7 Dashboard no longer has full admin privileges granted by default, so you need to create a token to access the resources:
-```sh
-$ kubectl -n kube-system create sa dashboard
-$ kubectl create clusterrolebinding dashboard --clusterrole cluster-admin --serviceaccount=kube-system:dashboard
-$ kubectl -n kube-system get sa dashboard -o yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  creationTimestamp: 2017-11-27T17:06:41Z
-  name: dashboard
-  namespace: kube-system
-  resourceVersion: "69076"
-  selfLink: /api/v1/namespaces/kube-system/serviceaccounts/dashboard
-  uid: 56b880bf-d395-11e7-9528-448a5ba4bd34
-secrets:
-- name: dashboard-token-vg52j
-
-$ kubectl -n kube-system describe secrets dashboard-token-vg52j
+### If you want to set the network implementation
+Edit `/group_vars/all.yml`
+```
+kube_version: v1.18.0
 ...
-token:      eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJrdWJlLXN5c3RlbSIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VjcmV0Lm5hbWUiOiJkYXNoYm9hcmQtdG9rZW4tdmc1MmoiLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoiZGFzaGJvYXJkIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZXJ2aWNlLWFjY291bnQudWlkIjoiNTZiODgwYmYtZDM5NS0xMWU3LTk1MjgtNDQ4YTViYTRiZDM0Iiwic3ViIjoic3lzdGVtOnNlcnZpY2VhY2NvdW50Omt1YmUtc3lzdGVtOmRhc2hib2FyZCJ9.bVRECfNS4NDmWAFWxGbAi1n9SfQ-TMNafPtF70pbp9Kun9RbC3BNR5NjTEuKjwt8nqZ6k3r09UKJ4dpo2lHtr2RTNAfEsoEGtoMlW8X9lg70ccPB0M1KJiz3c7-gpDUaQRIMNwz42db7Q1dN7HLieD6I4lFsHgk9NPUIVKqJ0p6PNTp99pBwvpvnKX72NIiIvgRwC2cnFr3R6WdUEsuVfuWGdF-jXyc6lS7_kOiXp2yh6Ym_YYIr3SsjYK7XUIPHrBqWjF-KXO_AL3J8J_UebtWSGomYvuXXbbAUefbOK4qopqQ6FzRXQs00KrKa8sfqrKMm_x71Kyqq6RbFECsHPA
-
-$ kubectl proxy
+network: flannel
 ```
-> Copy and paste the `token` from above to dashboard.
-
-Login the dashboard:
-- Dashboard: [https://API_SERVER:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/](https://API_SERVER:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/)
-- Logging: [https://API_SERVER:8001/api/v1/namespaces/kube-system/services/kibana-logging/proxy/](https://API_SERVER:8001/api/v1/namespaces/kube-system/services/kibana-logging/proxy/)
-
