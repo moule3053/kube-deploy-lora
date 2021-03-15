@@ -819,3 +819,207 @@ users:
     token: ${token}
 " > ${configname}
 ################################################################################
+export varnamespace=team17-namespace
+export varsaname=team17-sa
+username=team17-picocluster4-user
+contextname=team17-pico4-context
+configname=pico4/team17-pico4-config
+#create namespace
+envsubst < ./team-namespace.yaml | kubectl apply -f -
+
+#create service account for the team
+envsubst < ./team-sa-create.yaml | kubectl apply -f -
+
+#create an admin role for the specified namespace
+envsubst < ./team-admin-role.yaml | kubectl apply -f -
+
+#see the roles
+kubectl get roles --namespace $varnamespace
+
+#bind the role to a user
+envsubst < ./team-admin-role-binding.yaml | kubectl apply -f -
+
+#see the bindings
+kubectl get rolebinding --namespace $varnamespace
+
+# the name of the secret containing the service account token goes here
+secretname=$(kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o jsonpath='{.secrets[0].name}')
+ca=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.ca\.crt}')
+token=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.token}' | base64 --decode)
+namespace=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.namespace}' | base64 --decode)
+
+echo "
+apiVersion: v1
+kind: Config
+name: ${configname}
+clusters:
+- cluster:
+    certificate-authority-data: ${ca}
+    server: ${picoip}
+  name: ${clustername}
+contexts:
+- context:
+    cluster: ${clustername}
+    namespace: ${namespace}
+    user: ${username}
+  name: ${contextname}
+current-context: ${contextname}
+users:
+- name: ${username}
+  user:
+    token: ${token}
+" > ${configname}
+################################################################################
+export varnamespace=team18-namespace
+export varsaname=team18-sa
+username=team18-picocluster4-user
+contextname=team18-pico4-context
+configname=pico4/team18-pico4-config
+#create namespace
+envsubst < ./team-namespace.yaml | kubectl apply -f -
+
+#create service account for the team
+envsubst < ./team-sa-create.yaml | kubectl apply -f -
+
+#create an admin role for the specified namespace
+envsubst < ./team-admin-role.yaml | kubectl apply -f -
+
+#see the roles
+kubectl get roles --namespace $varnamespace
+
+#bind the role to a user
+envsubst < ./team-admin-role-binding.yaml | kubectl apply -f -
+
+#see the bindings
+kubectl get rolebinding --namespace $varnamespace
+
+# the name of the secret containing the service account token goes here
+secretname=$(kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o jsonpath='{.secrets[0].name}')
+ca=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.ca\.crt}')
+token=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.token}' | base64 --decode)
+namespace=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.namespace}' | base64 --decode)
+
+echo "
+apiVersion: v1
+kind: Config
+name: ${configname}
+clusters:
+- cluster:
+    certificate-authority-data: ${ca}
+    server: ${picoip}
+  name: ${clustername}
+contexts:
+- context:
+    cluster: ${clustername}
+    namespace: ${namespace}
+    user: ${username}
+  name: ${contextname}
+current-context: ${contextname}
+users:
+- name: ${username}
+  user:
+    token: ${token}
+" > ${configname}
+################################################################################
+export varnamespace=team19-namespace
+export varsaname=team19-sa
+username=team19-picocluster4-user
+contextname=team19-pico4-context
+configname=pico4/team19-pico4-config
+#create namespace
+envsubst < ./team-namespace.yaml | kubectl apply -f -
+
+#create service account for the team
+envsubst < ./team-sa-create.yaml | kubectl apply -f -
+
+#create an admin role for the specified namespace
+envsubst < ./team-admin-role.yaml | kubectl apply -f -
+
+#see the roles
+kubectl get roles --namespace $varnamespace
+
+#bind the role to a user
+envsubst < ./team-admin-role-binding.yaml | kubectl apply -f -
+
+#see the bindings
+kubectl get rolebinding --namespace $varnamespace
+
+# the name of the secret containing the service account token goes here
+secretname=$(kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o jsonpath='{.secrets[0].name}')
+ca=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.ca\.crt}')
+token=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.token}' | base64 --decode)
+namespace=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.namespace}' | base64 --decode)
+
+echo "
+apiVersion: v1
+kind: Config
+name: ${configname}
+clusters:
+- cluster:
+    certificate-authority-data: ${ca}
+    server: ${picoip}
+  name: ${clustername}
+contexts:
+- context:
+    cluster: ${clustername}
+    namespace: ${namespace}
+    user: ${username}
+  name: ${contextname}
+current-context: ${contextname}
+users:
+- name: ${username}
+  user:
+    token: ${token}
+" > ${configname}
+################################################################################
+export varnamespace=team20-namespace
+export varsaname=team20-sa
+username=team20-picocluster4-user
+contextname=team20-pico4-context
+configname=pico4/team20-pico4-config
+#create namespace
+envsubst < ./team-namespace.yaml | kubectl apply -f -
+
+#create service account for the team
+envsubst < ./team-sa-create.yaml | kubectl apply -f -
+
+#create an admin role for the specified namespace
+envsubst < ./team-admin-role.yaml | kubectl apply -f -
+
+#see the roles
+kubectl get roles --namespace $varnamespace
+
+#bind the role to a user
+envsubst < ./team-admin-role-binding.yaml | kubectl apply -f -
+
+#see the bindings
+kubectl get rolebinding --namespace $varnamespace
+
+# the name of the secret containing the service account token goes here
+secretname=$(kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o jsonpath='{.secrets[0].name}')
+ca=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.ca\.crt}')
+token=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.token}' | base64 --decode)
+namespace=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.namespace}' | base64 --decode)
+
+echo "
+apiVersion: v1
+kind: Config
+name: ${configname}
+clusters:
+- cluster:
+    certificate-authority-data: ${ca}
+    server: ${picoip}
+  name: ${clustername}
+contexts:
+- context:
+    cluster: ${clustername}
+    namespace: ${namespace}
+    user: ${username}
+  name: ${contextname}
+current-context: ${contextname}
+users:
+- name: ${username}
+  user:
+    token: ${token}
+" > ${configname}
+################################################################################

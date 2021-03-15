@@ -1,5 +1,5 @@
 # your server name goes here
-picoip=https://192.168.9.20:6443
+picoip=https://192.168.9.10:6443
 varnamespace=team1-namespace
 varsaname=team1-sa
 # the name of the secret containing the service account token goes here

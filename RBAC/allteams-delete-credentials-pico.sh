@@ -61,3 +61,20 @@ kubectl delete  namespace $varnamespace
 varnamespace=team16-namespace
 #delete namespace
 kubectl delete  namespace $varnamespace
+
+varnamespace=team17-namespace
+#delete namespace
+kubectl delete  namespace $varnamespace
+
+varnamespace=team18-namespace
+#delete namespace
+kubectl delete  namespace $varnamespace
+
+varnamespace=team19-namespace
+#delete namespace
+kubectl delete  namespace $varnamespace
+
+varnamespace=team20-namespace
+#delete namespace
+kubectl delete  namespace $varnamespace
+
