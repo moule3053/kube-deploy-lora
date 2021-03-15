@@ -11,3 +11,8 @@ varnamespace=team10-namespace
 
 kubectl delete -n $varnamespace -f ./nodered/
 ################################################################################
+export port=1897
+varnamespace=team17-namespace
+
+kubectl delete -n $varnamespace -f ./nodered/
+################################################################################

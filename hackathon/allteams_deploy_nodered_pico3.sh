@@ -13,3 +13,9 @@ varnamespace=team10-namespace
 kubectl apply -f ./nodered/deployment.yml --namespace $varnamespace
 envsubst < ./nodered/service.yml | kubectl apply --namespace $varnamespace -f -
 ################################################################################
+export port=1897
+varnamespace=team17-namespace
+
+kubectl apply -f ./nodered/deployment.yml --namespace $varnamespace
+envsubst < ./nodered/service.yml | kubectl apply --namespace $varnamespace -f -
+################################################################################
