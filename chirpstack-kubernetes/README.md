@@ -4,11 +4,11 @@
 myclusterIP is the host IP address, acts as a manager in GlusterFS
 
 ```
-export myclusterIP=192.168.1.10
+$ export myclusterIP=192.168.1.10
 ```
 
 ### Generate GlusterFS Endpoints files
-Edit the IP address range in the <mark>generate_glusterfs_endpoints.sh</mark> file first using a text editor
+Edit the IP address range in the `generate_glusterfs_endpoints.sh` file first using a text editor
 
 ```
 for i in {11..19} -> change your cluster address range here
@@ -20,18 +20,18 @@ echo "- addresses:
 
 Run the glusterFS generation script
 ```
-./generate_glusterfs_endpoints.sh
+$ ./generate_glusterfs_endpoints.sh
 ```
 
 ## Deploying
 Run following to deploy all software stack
 ```
-sh ./deploy_all.sh
+$ sh ./deploy_all.sh
 ```
 
 After running the deployment, wait for them to fully deployed
 ```
-kubectl get pods
+$ kubectl get pods
 ```
 
 ```
@@ -47,65 +47,64 @@ redis                                            1/1     Running   0          1m
 
 After the pod creation, create the databases:
 ```
-sh ./postgres/create_db.sh
-sh ./influxdb/create_users.sh
+$ sh ./postgres/create_db.sh
+$ sh ./influxdb/create_users.sh
 ```
 
 ## Deleting
 If you want to delete the stack, run following to delete all:
 ```
-sh ./delete_all.sh
+$ sh ./delete_all.sh
 ```
 
 ## Debugging
 You can run the following commands step by step to debug the Deployment stage:
 ```
-kubectl apply -f ./mosquitto/mosquitto-glusterfs-endpoint.yaml
-kubectl apply -f ./mosquitto/storage.yml
-kubectl apply -f ./mosquitto/configmap.yaml
-kubectl apply -f ./mosquitto/deployment.yml
-envsubst < ./mosquitto/service.yml | kubectl apply -f -
+$ kubectl apply -f ./mosquitto/mosquitto-glusterfs-endpoint.yaml
+$ kubectl apply -f ./mosquitto/storage.yml
+$ kubectl apply -f ./mosquitto/configmap.yaml
+$ kubectl apply -f ./mosquitto/deployment.yml
+$ envsubst < ./mosquitto/service.yml | kubectl apply -f -
 
-kubectl apply -f ./influxdb/influxdb-glusterfs-endpoint.yaml
-kubectl apply -f ./influxdb/storage.yml
-kubectl apply -f ./influxdb/deployment.yml
-envsubst < ./influxdb/service.yml | kubectl apply -f -
+$ kubectl apply -f ./influxdb/influxdb-glusterfs-endpoint.yaml
+$ kubectl apply -f ./influxdb/storage.yml
+$ kubectl apply -f ./influxdb/deployment.yml
+$ envsubst < ./influxdb/service.yml | kubectl apply -f -
 
-kubectl apply -f ./postgres/
-kubectl apply -k redis/.
+$ kubectl apply -f ./postgres/
+$ kubectl apply -k redis/.
 
-kubectl apply -f ./chirpstack-network-server/configMap.yml
-kubectl apply -f ./chirpstack-network-server/deployment.yml
-envsubst < ./chirpstack-network-server/service.yml | kubectl apply -f -
+$ kubectl apply -f ./chirpstack-network-server/configMap.yml
+$ kubectl apply -f ./chirpstack-network-server/deployment.yml
+$ envsubst < ./chirpstack-network-server/service.yml | kubectl apply -f -
 
-kubectl apply -f ./chirpstack-application-server/configMap.yml
-kubectl apply -f ./chirpstack-application-server/deployment.yml
-envsubst < ./chirpstack-application-server/service.yml | kubectl apply -f -
+$ kubectl apply -f ./chirpstack-application-server/configMap.yml
+$ kubectl apply -f ./chirpstack-application-server/deployment.yml
+$ envsubst < ./chirpstack-application-server/service.yml | kubectl apply -f -
 
-kubectl apply -f ./monitoring/configmap.yaml
-kubectl apply -f ./monitoring/kube-state-metrics.yaml
-kubectl apply -f ./monitoring/node-exporter.yaml
-kubectl apply -f ./monitoring/rbac.yaml
-envsubst < ./monitoring/grafana.yaml | kubectl apply -f -
-envsubst < ./monitoring/prometheus.yaml | kubectl apply -f -
+$ kubectl apply -f ./monitoring/configmap.yaml
+$ kubectl apply -f ./monitoring/kube-state-metrics.yaml
+$ kubectl apply -f ./monitoring/node-exporter.yaml
+$ kubectl apply -f ./monitoring/rbac.yaml
+$ envsubst < ./monitoring/grafana.yaml | kubectl apply -f -
+$ envsubst < ./monitoring/prometheus.yaml | kubectl apply -f -
 
-kubectl apply -f ./nodered/deployment.yml
-envsubst < ./nodered/service.yml | kubectl apply -f -
+$ kubectl apply -f ./nodered/deployment.yml
+$ envsubst < ./nodered/service.yml | kubectl apply -f -
 ```
 
 You can run the following commands step by step to debug the Deleting stage
 ```
-kubectl delete -f ./mosquitto/
-kubectl delete -f ./influxdb/
-kubectl delete -f ./postgres/
-kubectl delete -k redis/.
-# kubectl delete -f ./chirpstack-gateway-bridge/
-kubectl delete -f ./chirpstack-network-server/
-kubectl delete -f ./chirpstack-application-server/
-kubectl delete -f ./monitoring/
-kubectl delete -f ./nodered/
-kubectl delete pvc mosquitto postgres-pv-claim postgresinit-pv-claim
-kubectl delete pv mosquitto-pv-volume postgres-pv-volume postgresinit-pv-volume
+$ kubectl delete -f ./mosquitto/
+$ kubectl delete -f ./influxdb/
+$ kubectl delete -f ./postgres/
+$ kubectl delete -k redis/.
+$ kubectl delete -f ./chirpstack-network-server/
+$ kubectl delete -f ./chirpstack-application-server/
+$ kubectl delete -f ./monitoring/
+$ kubectl delete -f ./nodered/
+$ kubectl delete pvc mosquitto postgres-pv-claim postgresinit-pv-claim
+$ kubectl delete pv mosquitto-pv-volume $ postgres-pv-volume postgresinit-pv-volume
 ```
 
 ## Exposing to external IPs
@@ -119,7 +118,7 @@ port:1883  /mosquitto/service.yml
 port:8086  /influxdb/service.yml
 port:1880  /nodered/service.yml
 ```
-
+End of the file looks like
 ```
 externalIPs:
 - $myclusterIP

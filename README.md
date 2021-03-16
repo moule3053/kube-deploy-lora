@@ -1,27 +1,27 @@
 # kube-deploy-lora
+### Preparing the Raspberry Pis for running ansible
 
-
-### Run etcher from cli to burn images:
+Run etcher from cli to burn images:
 ```
-sudo /Applications/balenaEtcher.app/Contents/MacOS/balenaEtcher
-```
-
-### Allow ssh in SD cards
-```
-touch /Volumes/boot/ssh
+$ sudo /Applications/balenaEtcher.app/Contents/MacOS/balenaEtcher
 ```
 
-### SSH into each Pis
+Allow ssh in SD cards
 ```
-ssh pi@raspberrypi.local
+$ touch /Volumes/boot/ssh
 ```
 
-### Add inside /boot/cmdline.txt
+SSH into each Pis
+```
+$ ssh pi@raspberrypi.local
+```
+
+Add the following text inside the file `/boot/cmdline.txt`
 ```
 cgroup_enable=memory
 ```
 
-### Add inside /etc/network/interfaces
+Update the `/etc/network/interfaces` file for setting specific IP address
 ```
 auto eth0
 iface eth0 inet static
@@ -31,7 +31,7 @@ gateway 192.168.1.1
 dns-nameservers 192.168.1.1 8.8.8.8
 ```
 
-### Update the /etc/hosts with your cluster IPs
+Update the `/etc/hosts` with your cluster's of IP addresses
 ```
 192.168.1.10 pc0
 192.168.1.11 pc1
@@ -40,19 +40,19 @@ dns-nameservers 192.168.1.1 8.8.8.8
 192.168.1.N pcN
 ```
 
-### Edit the hostname and password by
+Edit the hostname and password by editing `raspi-config`
 ```
-sudo raspi-config
-```
-
-### And reboot
-```
-sudo reboot
+$ sudo raspi-config
 ```
 
-### Lastly, enable passwordless connection by
+Reboot
 ```
-ssh-copy-id pi@name
+$ sudo reboot
+```
+
+Lastly, enable passwordless connection by from your machine by copying 
+```
+$ ssh-copy-id pi@name
 ```
 
 ### The Pi is now ready to run ansible scripts
