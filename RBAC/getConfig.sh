@@ -1,5 +1,5 @@
 # your server name goes here
-picoip=[https://192.168.9.20:6443]
+picoip=[https://192.168.9.10:6443]
 varnamespace=[team1-namespace]
 varsaname=[team1-sa]
 # the name of the secret containing the service account token goes here
@@ -7,10 +7,10 @@ secretname=$(kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o
 ca=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.ca\.crt}')
 token=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.token}' | base64 --decode)
 namespace=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.namespace}' | base64 --decode)
-clustername=[picocluster1]
-username=[team1-picocluster1-user]
-contextname=[team1-pico1-context]
-configname=[team1-pico1-config]
+clustername=picocluster1
+username=team1-picocluster1-user
+contextname=team1-pico1-context
+configname=team1-pico1-config
 
 echo "
 apiVersion: v1
