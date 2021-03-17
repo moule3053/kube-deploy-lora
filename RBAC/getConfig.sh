@@ -1,7 +1,7 @@
 # your server name goes here
-picoip=https://192.168.9.10:6443
-varnamespace=team1-namespace
-varsaname=team1-sa
+picoip=[https://192.168.9.10:6443]
+varnamespace=[team1-namespace]
+varsaname=[team1-sa]
 # the name of the secret containing the service account token goes here
 secretname=$(kubectl get serviceaccounts/$varsaname --namespace $varnamespace -o jsonpath='{.secrets[0].name}')
 ca=$(kubectl get secret $secretname -n $varnamespace -o jsonpath='{.data.ca\.crt}')

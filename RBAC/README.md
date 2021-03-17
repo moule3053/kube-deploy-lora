@@ -28,7 +28,12 @@ $username
 $contextname
 $configname
 
+For only one team on one cluster, run the following script:
 	./getConfig.sh
+
+For all the teams on one cluster, run the following script:
+	./allteams-create-credentials-pico[pico number].sh  
+	example: ./allteams-create-credentials-pico1.sh
 
 ### Merge the kubeconfigs for each team
 
@@ -39,3 +44,7 @@ $configname
 	kubectl config get-contexts
 
 	kubectl --context [the-context-name] get pods
+
+### Delete all the namespaces on one pico cluser
+
+	./allteams-delete-credentials-pico.sh	
