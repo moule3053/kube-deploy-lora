@@ -32,7 +32,7 @@ For only one team on one cluster, run the following script:
 	./getConfig.sh
 
 For all the teams on one cluster, run the following script:
-	./allteams-create-credentials-pico[pico number].sh  
+	./allteams-create-credentials-pico[#No].sh  
 	example: ./allteams-create-credentials-pico1.sh
 
 ### Merge the kubeconfigs for each team
