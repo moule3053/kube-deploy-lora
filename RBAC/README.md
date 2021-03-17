@@ -33,7 +33,9 @@ For only one team on one cluster, run the following script:
 
 For all the teams on one cluster, run the following script:
 	./allteams-create-credentials-pico[#No].sh  
-	example: ./allteams-create-credentials-pico1.sh
+	
+	replace [#No] with the pico cluster number, for example:
+	./allteams-create-credentials-pico1.sh
 
 ### Merge the kubeconfigs for each team
 
