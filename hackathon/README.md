@@ -23,5 +23,6 @@ For only one team on one cluster, run the following script:
 	
 For all the teams on one cluster, run the following script:
 	./allteams_delete_nodered_pico[#No.].sh 
+	
 	replace [#No] with the pico cluster number, for example:
 	./allteams_delete_nodered_pico1.sh 
