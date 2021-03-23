@@ -4,6 +4,38 @@ kind: Namespace
 metadata:
     name: monitoring
 ---
+kind: PersistentVolume
+apiVersion: v1
+metadata:
+  name: prometheus-data-pv
+  namespace: monitoring
+  labels:
+    app: prometheus
+spec:
+  storageClassName: manual
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteMany
+  hostPath:
+    path: "/prometheus-data/"
+  persistentVolumeReclaimPolicy: Retain
+---
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: prometheus-data-pvc
+  namespace: monitoring
+  labels:
+    app: prometheus
+spec:
+  storageClassName: manual
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 50Gi
+---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -129,7 +161,7 @@ spec:
         args:
         - "--config.file=/etc/prometheus/prometheus.yml"
         - "--storage.tsdb.path=/prometheus"
-        - "--storage.tsdb.retention=24h"
+        - "--storage.tsdb.retention=91d"
         ports:
         - containerPort: 9090
           protocol: TCP
@@ -143,12 +175,13 @@ spec:
             cpu: 100m
             memory: 100Mi
           limits:
-            cpu: 500m
+            cpu: 1024m
             memory: 2500Mi
       serviceAccountName: prometheus
       volumes:
       - name: data
-        emptyDir: {}
+        persistentVolumeClaim:
+            claimName: prometheus-data-pvc
       - name: config-volume
         configMap:
           name: prometheus-config
@@ -170,4 +203,4 @@ spec:
     app: prometheus
   externalIPs:
   - 192.168.9.71
-  - 172.20.192.19
+  - 172.20.192.3
