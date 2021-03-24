@@ -140,5 +140,6 @@ To deploy Fluentbit on the fog clusters, first update the `Logstash_Prefix` in `
 
 Next, deploy using
 ```
+kubectl create namespace logging
 kubectl apply -f logging/
 ```
