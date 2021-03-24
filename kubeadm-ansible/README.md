@@ -126,6 +126,13 @@ If you need to change the default password of the user picocluster, run from `ku
 ansible-playbook -i hosts.ini change-password.yml --extra-vars newpassword=NEWPASSWORD
 ```
 
+# Updating the `/etc/resolv.conf` file in all nodes for fast name resolution
+
+On each master node go to `kubeadm-ansible` directory, check the `hosts.ini` file for correctness, and run:
+```
+ansible-playbook -i hosts.ini copy-resolv-conf.yml
+```
+
 # For more information
 This repo is forked and edited from https://github.com/kairen/kubeadm-ansible
 See the original repo for additional features.
