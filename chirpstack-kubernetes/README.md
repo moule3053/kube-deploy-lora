@@ -123,3 +123,22 @@ End of the file looks like
 externalIPs:
 - $myclusterIP
 ```
+
+## Logging
+
+The logging infrastructure is based on Fluentbit, ElasticSearch and Kibana.
+
+Fluentbit is deployed on the master nodes of each fog cluster as a daemonset, to capture control plane events only (e.g., creation of a pod, etc.).
+
+Fluentbit is configured to push the logs to ElasticSearch which is deployed on the central server.
+
+Kibana, also deployed on the central server, is used to search and visualize the logs from ElasticSearch.
+
+Check the ElasticSearch and Kibana deployment documentaion in the central server.
+
+To deploy Fluentbit on the fog clusters, first update the `Logstash_Prefix` in `logging/fluent-bit-configmap.yaml` file to the cluster name.
+
+Next, deploy using
+```
+kubectl apply -f logging/
+```
