@@ -8,7 +8,7 @@ rules:
   resources: ["pods","pods/log", "pods/portforward", 
               "services", "services/logs"
               ]
-  verbs: ["create","get", "list", "watch", "delete"]
+  verbs: ["create","get", "list", "watch", "update", "patch", "delete"]
 
 - apiGroups: ["apps","extensions",]
   resources: [ "deployments", "deployments/logs"
