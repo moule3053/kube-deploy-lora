@@ -4,7 +4,7 @@ metadata:
   labels:
     name: prometheus-deployment
   name: prometheus
-  namespace: kube-system
+  namespace: monitoring
 spec:
   replicas: 1
   selector:
@@ -53,7 +53,7 @@ metadata:
   labels:
     app: prometheus
   name: prometheus
-  namespace: kube-system
+  namespace: monitoring
 spec:
   type: NodePort
   ports:
@@ -62,5 +62,3 @@ spec:
     nodePort: 30003
   selector:
     app: prometheus
-  externalIPs:
-  - $myclusterIP
